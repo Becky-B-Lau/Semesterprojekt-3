@@ -16,6 +16,17 @@ createApp({
     
     // Definerer metoder (funktioner), der kan bruges i appen
     methods: {
+            // Debug-metode for at teste, om Vue fungerer
+            debugTest() {
+                console.log("Vue fungerer korrekt!");
+            alert("Vue fungerer korrekt!");
+            },
+
+                testClick() {
+                    console.log("Vue virker korrekt!");
+                    alert("Vue fungerer!");
+                },
+
         // Asynkron funktion til at opdatere procentdelen baseret på nuværende skridt og mål
         async updatePercentage() {
             try {
@@ -79,6 +90,7 @@ createApp({
 
         // Funktion til at teste cirkeldiagrammet med fiktiv data
         TestChart() {
+            console.log("TestChart kaldt!"); // Tilføj debug-log
             this.steps = Math.floor(Math.random() * this.goal); // Genererer tilfældige skridt
             this.updatePercentage(); // Opdaterer procentdelen og diagrammet
         }

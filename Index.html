@@ -11,6 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.js"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Link til egne filer -->
     <script src="JavaScript.js"></script>
     <link rel="stylesheet" href="StyleSheet.css">
@@ -30,6 +32,9 @@
         <p class="mt-3">Forsøg</p>
         <h5>Hej med dig</h5>
 
+        <p @click="testClick">Klik her for at teste Vue (simpel test)</p>
+
+        <button @click="debugTest">Klik for at teste Vue</button>
         <button class="btn btn-secondary mt-3" @click="TestChart">Test diagrammet med fiktiv data</button>
     </div>
 </body>
