@@ -32,3 +32,4 @@ while True:
     if current_time.strftime("%H:%M") == "14:40":
         step_count = 0
         print("Skridttæller nulstillet ved midnat.")
+        continue
