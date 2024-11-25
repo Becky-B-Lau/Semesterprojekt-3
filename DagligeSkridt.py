@@ -2,14 +2,23 @@ from sense_hat import SenseHat
 
 sense = SenseHat()
 
+step_count = 0  # Variabel til at holde styr på antallet af skridt
+threshold = 1.5  # Tærskel for accelerationsændring (juster efter behov)
+
+# Husk den tidligere acceleration for at finde ændringer
+previous_x, previous_y, previous_z = 0, 0, 0
+
 while True:
-	acceleration = sense.get_accelerometer_raw()
-	x = acceleration['x']
-	y = acceleration['y']
-	z = acceleration['z']
-
-	x=round(x, 0)
-	y=round(y, 0)
-	z=round(z, 0)
-
-	print("x={0}, y={1}, z={2}".format(x, y, z))
+    # Læs accelerometerdata
+    acceleration = sense.get_accelerometer_raw()
+    x = acceleration['x']
+    y = acceleration['y']
+    z = acceleration['z']
+    
+    # Sammenlign med den tidligere acceleration
+    if abs(x - previous_x) > threshold or abs(y - previous_y) > threshold or abs(z - previous_z) > threshold:
+        step_count += 1  # Øg skridttælleren
+        print(f"Skridt: {step_count}")
+    
+    # Opdater tidligere acceleration
+    previous_x, previous_y, previous_z = x, y, z
