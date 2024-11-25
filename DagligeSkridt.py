@@ -1,12 +1,15 @@
 from sense_hat import SenseHat
-
+from datetime import datetime
 sense = SenseHat()
+
+
 
 step_count = 0  # Variabel til at holde styr på antallet af skridt
 threshold = 1.5  # Tærskel for accelerationsændring (juster efter behov)
 
 # Husk den tidligere acceleration for at finde ændringer
 previous_x, previous_y, previous_z = 0, 0, 0
+
 
 while True:
     # Læs accelerometerdata
@@ -22,3 +25,10 @@ while True:
     
     # Opdater tidligere acceleration
     previous_x, previous_y, previous_z = x, y, z
+   # Hent det aktuelle tidspunkt
+    current_time = datetime.now()
+    
+    # Tjek, om klokken er midnat
+    if current_time.strftime("%H:%M") == "14:40":
+        step_count = 0
+        print("Skridttæller nulstillet ved midnat.")
