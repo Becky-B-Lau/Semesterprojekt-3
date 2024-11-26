@@ -11,6 +11,7 @@
     align-items: center; /* Centrerer vertikalt */
     text-align: center; /* Centrerer tekst indeni */
     margin-left: 10px; /* Afstand til venstre */
+    transform: translateX(-8%); /* Justerer billedet, så det er helt centreret horisontalt */
 }
 
 .box h1, .box h2 {
@@ -48,11 +49,13 @@
     height: 100vh; /* Gør containeren høj */
 }
 
-image {
-    width: 70%; /* Fast bredde */
-    height: auto; /* Fast højde */
-    border-radius: 50%; /* Afrundede hjørner */
-    bottom: 10%; /* Afstand fra bunden af skærmen */
-    left: 50%; /* Centrer billedet horisontalt */
+.image {
+    position: absolute; /* Gør det muligt at placere billedet præcist */
+    width: auto; /* Fast bredde */
+    height: 300%; /* Bevarer billedets proportioner */
+    left: 50%; /* Placerer billedet midt horisontalt */
+    transform: translateX(-50%); /* Justerer billedet, så det er helt centreret horisontalt */
+    border-radius: 50%; /* Afrundede hjørner, hvis du ønsker det */
+    margin-top: 10%;
 }
 
