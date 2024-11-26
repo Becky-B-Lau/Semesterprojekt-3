@@ -38,14 +38,36 @@
             <div class="col-md-6">
                 <p>Skridt {{ steps }}</p>
                 <p>Mål: {{ goal }}</p>
-                <p>Procent: {{ percentage }}%</p>
+                <p>Procent: {{ percentage }}%</p> <button @click="changeImage">Change Image</button>
+                <img :src="imageUrl" alt="Træ" class="image">
             </div>
         </div>
     </div>
-    <div>
-        <div class="container2">
-            <img src="./Images/Træ 1.png" alt="Træ" class="image">
-        </div>
-    </div>
+</body>
+</html>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                imageUrl: './Images/Træ 1.png'
+            }
+        },
+        methods: {
+            changeImage() {
+            const images = [
+                './Images/Træ 1.png',
+                './Images/Træ 2.png',
+                './Images/Træ 3.png',
+                './Images/Træ 4.png',
+                './Images/Træ 5.png'
+            ];
+            const currentIndex = images.indexOf(this.imageUrl);
+            this.imageUrl = images[(currentIndex + 1) % images.length];
+            }
+        }
+    });
+
+    app.mount('#app');
+</script>
 </body>
 </html>
