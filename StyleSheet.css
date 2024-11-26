@@ -41,3 +41,19 @@
     flex-direction: row; /* Placer elementerne i en række */
     gap: 10px; /* Giv mellemrum mellem boksene */
 }
+
+.container2 {
+    display: flex;
+    justify-content: center; /* Centrerer horisontalt */
+    align-items: center; /* Centrerer lodret */
+    height: 100vh; /* Gør containeren høj */
+}
+
+.image {
+    width: 70%; /* Fast bredde */
+    height: auto; /* Fast højde */
+    border-radius: 50%; /* Afrundede hjørner */
+    bottom: 10%; /* Afstand fra bunden af skærmen */
+    left: 50%; /* Centrer billedet horisontalt */
+}
+
