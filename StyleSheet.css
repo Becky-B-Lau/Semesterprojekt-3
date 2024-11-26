@@ -13,20 +13,6 @@
     margin-left: 10px; /* Afstand til venstre */
 }
 
-.box2 {
-    width: 390px; /* Boksens bredde */
-    height: 390px; /* Boksens højde */
-    background-color: transparent; /* Boksens baggrundsfarve */
-    border: 2px solid #ccc; /* Boksens kant */
-    border-radius: 10px; /* Afrundede hjørner */
-    padding: 20px; /* Indre afstand */
-    display: flex; /* Aktiver Flexbox */
-    flex-direction: column; /* Laver en lodret (kolonne) retning */
-    justify-content: center; /* Centrerer horisontalt */
-    align-items: center; /* Centrerer vertikalt */
-    text-align: center; /* Centrerer tekst indeni */
-    margin-right: 10px; /* Afstand til højre */
-}
 
 .box h1, .box h2 {
     margin: 0; /* Fjerner standard margin */
