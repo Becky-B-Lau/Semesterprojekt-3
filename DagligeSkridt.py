@@ -29,7 +29,7 @@ while True:
     current_time = datetime.now()
     
     # Tjek, om klokken er midnat
-    if current_time.strftime("%H:%M") == "14:40":
+    if current_time.strftime("%H:%M:%S") == "14:40:00":
         step_count = 0
         print("Skridttæller nulstillet ved midnat.")
         continue
