@@ -3,6 +3,7 @@ from sense_hat import SenseHat
 from datetime import datetime, timedelta
 import threading
 import time
+import Database
 
 # Initialiser Flask-app og Sense HAT
 app = Flask(__name__)
@@ -33,6 +34,7 @@ def step_counter():
         # Sammenlign med tidligere acceleration
         if abs(x - previous_x) > threshold or abs(y - previous_y) > threshold or abs(z - previous_z) > threshold:
             step_count += 1  # Øg skridttælleren
+            insert_data(c, step_count)
             print(f"Skridt: {step_count}")
 
         # Opdater tidligere acceleration
