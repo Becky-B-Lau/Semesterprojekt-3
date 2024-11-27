@@ -102,7 +102,7 @@
         console.log('Data fra serveren:', data); // Debug
         const stepElement = document.getElementById('last-step');
         if (data.step) {
-            stepElement.textContent = `Seneste step: ${data.step}`;
+            stepElement.textContent = `${data.step}`;
         } else {
             stepElement.textContent = 'Ingen data fundet.';
         }
