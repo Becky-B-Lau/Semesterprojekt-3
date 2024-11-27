@@ -23,37 +23,36 @@
         <div class="row">
             <!-- Boks til skridt -->
             
-            <div class="box">
-                 <h1 id="last-step">Indlæser...</h1> 
+            <div class="box" id="box1">
+                <h1 id="last-step">Indlæser...</h1>
                 
                 <p>Skridt</p>
             </div>
             <!-- Diagram boks -->
             <div class="col">
-                <div class="box">
+                <div class="box" id="box2">
                     <canvas id="stepsChart"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="app" class="container">
-        <div class="row">
-            <!-- Vue-dynamisk boks -->
-            <div class="col-md-6">
-                <p>Skridt {{ steps }}</p>
-                <p>Mål: {{ goal }}</p>
-                <p>Procent: {{ percentage }}%</p> 
-                <button @click="changeImage">Change Image</button>
-                <img :src="imageUrl" alt="Træ" class="image">
-            </div>
-        </div>
-    </div>
-    <div class="container">
+        <div class="container"></div>
         <div class="row">
             <div class="Text">
                 <p>Dit nuværende</p>
                 <p>træ er i fase</p>
                 <p>{{ achievedCount }}/5.</p>
+            </div>
+        </div>
+        <div id="app" class="container">
+            <div class="row">
+                <!-- Vue-dynamisk boks -->
+                <div class="col-md-6">
+                    <p>Skridt {{ steps }}</p>
+                    <p>Mål: {{ goal }}</p>
+                    <p>Procent: {{ percentage }}%</p> 
+                    <button @click="changeImage">Change Image</button>
+                    <img :src="imageUrl" alt="Træ" class="image">
+                </div>
             </div>
         </div>
     </div>
