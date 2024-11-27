@@ -1,6 +1,6 @@
 .box {
-    width: 390px; /* Boksens bredde */
-    height: 390px; /* Boksens højde */
+    width: 350px; /* Boksens bredde */
+    height: 350px; /* Boksens højde */
     background-color: transparent; /* Boksens baggrundsfarve */
     border: 2px solid #ccc; /* Boksens kant */
     border-radius: 10px; /* Afrundede hjørner */
