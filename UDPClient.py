@@ -1,9 +1,16 @@
+from socket import *
 from flask import Flask, jsonify
 from sense_hat import SenseHat
 from datetime import datetime, timedelta
 import threading
 import time
-import Database
+
+
+serverName =  "" #IP addresse på den server som din computer er på
+serverPort = 5000
+clientSocket = socket(AF_INET, SOCK_DGRAM)
+
+print("The Client is ready to send")
 
 # Initialiser Flask-app og Sense HAT
 app = Flask(__name__)
@@ -14,7 +21,6 @@ step_count = 0  # Holder styr på antal skridt
 goal = 10000  # Dagligt mål for skridt
 threshold = 1.5  # Accelerationsændringstærskel
 previous_x, previous_y, previous_z = 0, 0, 0  # Tidligere acceleration
-
 
 # Baggrundstråd til at tælle skridt og nulstille ved midnat
 def step_counter():
@@ -34,8 +40,13 @@ def step_counter():
         # Sammenlign med tidligere acceleration
         if abs(x - previous_x) > threshold or abs(y - previous_y) > threshold or abs(z - previous_z) > threshold:
             step_count += 1  # Øg skridttælleren
-            insert_data(c, step_count)
-            print(f"Skridt: {step_count}")
+             # Konverter step_count til string, før det sendes
+            message = str(step_count)
+            clientSocket.sendto(message.encode(), (serverName, serverPort))
+            print(f"Skridt: {message}")
+            
+    
+            
 
         # Opdater tidligere acceleration
         previous_x, previous_y, previous_z = x, y, z
@@ -48,6 +59,7 @@ def step_counter():
             next_midnight += timedelta(days=1)
 
         time.sleep(0.1)  # Undgå unødig høj CPU-brug
+
 
 
 # Flask-route til at levere skridttællingsdata
