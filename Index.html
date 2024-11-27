@@ -22,32 +22,41 @@
         <div class="row">
             <!-- Boks til skridt -->
             
-            <div class="box">
-                 <h1 id="last-step">Indlæser...</h1> 
+            <div class="box" id="box1">
+                <h1 id="last-step">Indlæser...</h1>
                 
                 <p>Skridt</p>
             </div>
             <!-- Diagram boks -->
             <div class="col">
-                <div class="box">
+                <div class="box" id="box2">
                     <canvas id="stepsChart"></canvas>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="app" class="container">
-        <div class="row">
-            <!-- Vue-dynamisk boks -->
-            <div class="col-md-6">
-                <p>Skridt {{ steps }}</p>
-                <p>Mål: {{ goal }}</p>
-                <p>Procent: {{ percentage }}%</p> 
-                <button @click="changeImage">Change Image</button>
-                <img :src="imageUrl" alt="Træ" class="image">
+        <div id="app" class="container">
+            <div class="row">
+                <!-- Vue-dynamisk boks -->
+                <div class="col-md-6">
+                    <p>Skridt {{ steps }}</p>
+                    <p>Mål: {{ goal }}</p>
+                    <p>Procent: {{ percentage }}%</p> 
+                    <button @click="changeImage">Change Image</button>
+                    <img :src="imageUrl" alt="Træ" class="image">
+                </div>
             </div>
-        
         </div>
     </div>
+    
+    <div class="container"></div>
+    <div class="row">
+        <div class="Text">
+            <p>Dit nuværende</p>
+            <p>træ er i fase</p>
+            <p>{{ achievedCount }}/5.</p>
+        </div>
+    </div>
+    
 </body>
 </html>
 <script>
@@ -60,6 +69,7 @@
         methods: {
             changeImage() {
             const images = [
+                './Images/Træ 0.png',
                 './Images/Træ 1.png',
                 './Images/Træ 2.png',
                 './Images/Træ 3.png',
@@ -74,19 +84,6 @@
 
     app.mount('#app');
 </script>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="Text">
-<p>Dit nuværende</p>
-<p>træ er i fase</p>
-<p>{{ achievedCount }}/5.</p>
 </div>
 <script>
     // Fetch JSON-data fra Flask-backenden
@@ -112,7 +109,4 @@
         document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
     });
 </script>
- <!-- Link til egne filer -->
- <script src="DailyGoal.js"></script>
-</body>
 </html>
