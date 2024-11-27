@@ -65,16 +65,29 @@ def read_data(connection):
         print(f"Fejl ved læsning af data: {e}")
 
 # Læs data fra databasen
-def read_step(connection):
+#def read_step(connection):
+ #   try:
+  #      cursor = connection.cursor()
+   #     cursor.execute('SELECT steps FROM steps')
+    #    rows = cursor.fetchall()
+     #   print("Data i tabellen:")
+      #  for row in rows:
+       #     print(row)
+    #except Error as e:
+     #   print(f"Fejl ved læsning af data: {e}")
+def read_last_step(connection):
     try:
         cursor = connection.cursor()
-        cursor.execute('SELECT steps FROM steps')
-        rows = cursor.fetchall()
-        print("Data i tabellen:")
-        for row in rows:
-            print(row)
-    except Error as e:
+        cursor.execute('SELECT steps FROM steps WHERE ROWID = (SELECT MAX(ROWID) FROM steps)')
+        row = cursor.fetchone()  # Hent den nederste række
+        
+        if row:
+            step = row[0]  # Ekstraher værdien
+            print(f"Den nederste række (sidst indsatte step): {step}")
+            return step
+    except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
+        return None
 
 # Main program
 if __name__ == "__main__":
