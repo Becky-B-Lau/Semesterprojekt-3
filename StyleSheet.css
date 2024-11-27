@@ -1,17 +1,14 @@
 .box {
-    width: 350px; /* Boksens bredde */
-    height: 350px; /* Boksens højde */
+    width: 150px; /* Boksens bredde */
+    height: 150px; /* Boksens højde */
     background-color: transparent; /* Boksens baggrundsfarve */
     border: 2px solid #ccc; /* Boksens kant */
     border-radius: 10px; /* Afrundede hjørner */
-    padding: 20px; /* Indre afstand */
     display: flex; /* Aktiver Flexbox */
     flex-direction: column; /* Laver en lodret (kolonne) retning */
     justify-content: center; /* Centrerer horisontalt */
     align-items: center; /* Centrerer vertikalt */
     text-align: center; /* Centrerer tekst indeni */
-    margin-left: 10px; /* Afstand til venstre */
-    transform: translateX(-8%); /* Justerer billedet, så det er helt centreret horisontalt */
 }
 
 .box h1, .box h2 {
@@ -20,7 +17,11 @@
 }
 
 .box h1 {
-    font-size: 80px;
+    font-size: 50px;
+}
+
+.box p {
+    font-size: 20px;
 }
 
 .box h2 {
@@ -42,6 +43,10 @@
     gap: 10px; /* Giv mellemrum mellem boksene */
 }
 
+.col {
+    padding: 0%;
+}
+
 .container2 {
     display: flex;
     justify-content: center; /* Centrerer horisontalt */
@@ -57,10 +62,18 @@
     transform: translateX(-50%); /* Justerer billedet, så det er helt centreret horisontalt */
     border-radius: 50%; /* Afrundede hjørner, hvis du ønsker det */
     margin-top: 10%;
-}
+}   
 
 .Text {
-    font-size: 30px; /* Størrelse på tekst */
+    font-size: 15px; /* Størrelse på tekst */
+    margin-top: 20px; /* Afstand til billedet */
+    text-align: center; /* Centrerer teksten horisontalt */
+    margin-left: 30%; /* Fjern fast margin og centrér */
+    margin-right: auto; /* Fjern fast margin og centrér */
+    width: 100%; /* Sørg for, at teksten tager hele bredden */
+}
+
+#stepsChart {
     margin-top: 20px; /* Afstand til billedet */
     text-align: center; /* Centrerer teksten horisontalt */
     margin-left: 30%; /* Fjern fast margin og centrér */
