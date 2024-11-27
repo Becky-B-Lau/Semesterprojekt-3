@@ -75,19 +75,18 @@ def read_data(connection):
        #     print(row)
     #except Error as e:
      #   print(f"Fejl ved læsning af data: {e}")
-def read_last_step(connection):
+def read_last_step():
     try:
+        connection = connect_to_database()  # Funktion til at oprette forbindelse
         cursor = connection.cursor()
-        cursor.execute('SELECT steps FROM steps WHERE ROWID = (SELECT MAX(ROWID) FROM steps)')
-        row = cursor.fetchone()  # Hent den nederste række
-        
-        if row:
-            step = row[0]  # Ekstraher værdien
-            print(f"Den nederste række (sidst indsatte step): {step}")
-            return step
+        cursor.execute('SELECT steps FROM steps ORDER BY id DESC LIMIT 1')  # Sorter efter id og hent sidste række
+        row = cursor.fetchone()
+        connection.close()
+        return row[0] if row else None  # Returner værdien af "steps"
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
         return None
+
 
 # Main program
 if __name__ == "__main__":

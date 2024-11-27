@@ -23,7 +23,8 @@
         <div class="row">
             <!-- Boks til skridt -->
             <div class="box">
-                <h1>7.345</h1>
+                 <h1 id="last-step">Indlæser...</h1> 
+                
                 <p>Skridt</p>
             </div>
             <!-- Diagram boks -->
@@ -69,6 +70,29 @@
     });
 
     app.mount('#app');
+</script>
+<script>
+    fetch('http://127.0.0.1:5000/')
+    .then(response => {
+        console.log('HTTP status:', response.status); // Debug
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data fra serveren:', data); // Debug
+        const stepElement = document.getElementById('last-step');
+        if (data.step) {
+            stepElement.textContent = `Seneste step: ${data.step}`;
+        } else {
+            stepElement.textContent = 'Ingen data fundet.';
+        }
+    })
+    .catch(error => {
+        console.error('Fejl ved hentning:', error);
+        document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
+    });
 </script>
 </body>
 </html>
