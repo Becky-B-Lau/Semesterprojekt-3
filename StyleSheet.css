@@ -59,3 +59,11 @@
     margin-top: 10%;
 }
 
+.Text {
+    font-size: 30px; /* Størrelse på tekst */
+    margin-top: 20px; /* Afstand til billedet */
+    text-align: center; /* Centrerer teksten horisontalt */
+    margin-left: 17%; /* Fjern fast margin og centrér */
+    margin-right: auto; /* Fjern fast margin og centrér */
+    width: 100%; /* Sørg for, at teksten tager hele bredden */
+}
