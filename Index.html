@@ -48,6 +48,16 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="Text">
+                <p>Dit nuværende</p>
+                <p>træ er i fase</p>
+                <p>{{ achievedCount }}/5.</p>
+            </div>
+        </div>
+    </div>
+    
 </body>
 </html>
 <script>
@@ -60,6 +70,7 @@
         methods: {
             changeImage() {
             const images = [
+                './Images/Træ 0.png',
                 './Images/Træ 1.png',
                 './Images/Træ 2.png',
                 './Images/Træ 3.png',
@@ -74,19 +85,6 @@
 
     app.mount('#app');
 </script>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="Text">
-<p>Dit nuværende</p>
-<p>træ er i fase</p>
-<p>{{ achievedCount }}/5.</p>
 </div>
 <script>
     fetch('http://127.0.0.1:5000/')
@@ -111,5 +109,4 @@
         document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
     });
 </script>
-</body>
 </html>
