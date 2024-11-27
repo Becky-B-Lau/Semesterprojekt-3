@@ -74,9 +74,8 @@
 }
 
 #stepsChart {
-    margin-top: 20px; /* Afstand til billedet */
+    margin-top: 5%; /* Afstand til billedet */
     text-align: center; /* Centrerer teksten horisontalt */
-    margin-left: 30%; /* Fjern fast margin og centrér */
     margin-right: auto; /* Fjern fast margin og centrér */
     width: 100%; /* Sørg for, at teksten tager hele bredden */
 }

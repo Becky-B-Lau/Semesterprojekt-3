@@ -16,20 +16,22 @@ createApp({
                 './Images/Træ 5.png'
             ],
             currentImage: null // Det billede, der aktuelt vises
+            
         };
     },
     methods: {
         // Hent data fra Flask-serveren
         async fetchSteps() {
             try {
-                const response = await fetch('/steps'); // Flask API endpoint
+                const response = await fetch('http://127.0.0.1:5001/'); // Flask API endpoint
                 const data = await response.json();
-
+            
                 // Opdater Vue-data
-                this.steps = data.steps;
-                this.goal = data.goal;
-                this.percentage = data.percentage;
-
+                this.steps = data.step;
+                this.goal = 10000
+                // Beregn procentdel i frontend
+                this.percentage = Math.min((this.steps / this.goal) * 100, 100); // Begræns til 100%
+               
                 // Kontrollér, om målet er nået
                 this.checkGoalAchieved();
 
