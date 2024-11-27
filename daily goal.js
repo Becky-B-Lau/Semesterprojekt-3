@@ -6,7 +6,8 @@ createApp({
             steps: 0, // Aktuelle skridt
             goal: 10000, // Dagligt mål
             percentage: 0, // Procentdel
-            chart: null // Chart.js reference
+            chart: null, // Chart.js reference
+            goalAchieved: false // Ny data til styring af billedets synlighed
         };
     },
     methods: {
@@ -21,10 +22,20 @@ createApp({
                 this.goal = data.goal;
                 this.percentage = data.percentage;
 
+                // Kontrollér, om målet er nået
+                this.checkGoalAchieved();
+
                 // Opdater diagram
                 this.updateChart();
             } catch (error) {
                 console.error('Fejl ved hentning af skridttællerdata:', error);
+            }
+        },
+
+        // Kontrollér og vis billede, hvis målet er nået
+        checkGoalAchieved() {
+            if (this.steps >= this.goal) {
+                this.goalAchieved = true;
             }
         },
 
