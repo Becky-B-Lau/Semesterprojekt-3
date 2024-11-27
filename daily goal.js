@@ -7,7 +7,15 @@ createApp({
             goal: 10000, // Dagligt mål
             percentage: 0, // Procentdel
             chart: null, // Chart.js reference
-            goalAchieved: false // Ny data til styring af billedets synlighed
+            achievedCount: 0, // Antal gange målet er nået
+            images: [ // Liste over billeder
+                './Images/Træ 1.png',
+                './Images/Træ 2.png',
+                './Images/Træ 3.png',
+                './Images/Træ 4.png',
+                './Images/Træ 5.png'
+            ],
+            currentImage: null // Det billede, der aktuelt vises
         };
     },
     methods: {
@@ -32,10 +40,18 @@ createApp({
             }
         },
 
-        // Kontrollér og vis billede, hvis målet er nået
+        // Kontrollér, om målet er nået og vis nyt billede
         checkGoalAchieved() {
-            if (this.steps >= this.goal) {
-                this.goalAchieved = true;
+            const newAchievedCount = Math.floor(this.steps / this.goal);
+
+            // Hvis der er nye opnåelser, opdater billedet
+            if (newAchievedCount > this.achievedCount) {
+                this.achievedCount = newAchievedCount;
+
+                // Opdater billedet, hvis der stadig er flere billeder
+                if (this.achievedCount <= this.images.length) {
+                    this.currentImage = this.images[this.achievedCount - 1];
+                }
             }
         },
 
