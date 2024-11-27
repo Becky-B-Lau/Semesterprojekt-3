@@ -19,22 +19,56 @@ def connect_to_database():
         return None
 
 # Indsæt data i databasen
-def insert_data(steps):
+#def insert_data(steps):
+ #   try:
+  #      cursor = connect_to_database().cursor()
+   #     cursor.execute('''
+    #        INSERT INTO steps (steps) VALUES (%s)
+     #   ''', (steps))
+      #  connect_to_database().commit()
+      #  print(f"{cursor.rowcount} række(r) indsat.")
+    #except Error as e:
+     #   print(f"Fejl ved indsættelse af data: {e}")
+def insert_data(step_count):
     try:
-        cursor = connect_to_database().cursor()
-        cursor.execute('''
-            INSERT INTO steps (steps) VALUES (%s, %s)
-        ''', (steps))
-        connect_to_database().commit()
+        # Opret en forbindelse og cursor
+        connection = connect_to_database()
+        cursor = connection.cursor()
+
+        # Brug det rigtige kolonnenavn (tjek hvad din tabel bruger)
+        sql_query = "INSERT INTO steps (steps) VALUES (%s)"
+        cursor.execute(sql_query, (step_count,))  # Tuple med én værdi
+
+        # Commit ændringerne
+        connection.commit()
         print(f"{cursor.rowcount} række(r) indsat.")
+
     except Error as e:
         print(f"Fejl ved indsættelse af data: {e}")
+
+    finally:
+        # Luk cursor og forbindelse
+        cursor.close()
+        connection.close()
+
 
 # Læs data fra databasen
 def read_data(connection):
     try:
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM steps')
+        rows = cursor.fetchall()
+        print("Data i tabellen:")
+        for row in rows:
+            print(row)
+    except Error as e:
+        print(f"Fejl ved læsning af data: {e}")
+
+# Læs data fra databasen
+def read_step(connection):
+    try:
+        cursor = connection.cursor()
+        cursor.execute('SELECT steps FROM steps')
         rows = cursor.fetchall()
         print("Data i tabellen:")
         for row in rows:
