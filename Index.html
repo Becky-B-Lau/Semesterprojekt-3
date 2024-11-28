@@ -40,13 +40,21 @@
                     <p>Skridt {{ steps }}</p>
                     <p>Mål: {{ goal }}</p>
                     <p>Procent: {{ percentage }}%</p> 
-                    <button @click="changeImage">Change Image</button>
-                    <img :src="imageUrl" alt="Træ" class="image">
+                  
                 </div>
             </div>
         </div>
     </div>
-    
+
+    <div id="appimages" class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Fase-baseret billedskift</h1>
+                <p>Aktuel fase: {{ phase }}</p>
+                <img :src="imageUrl" alt="Træ billede" class="image" />
+            </div>
+        </div>
+    </div>
     <div class="container"></div>
     <div class="row">
         <div class="Text">
@@ -56,31 +64,6 @@
         </div>
     </div>
     
-<script>
-    const app = Vue.createApp({
-        data() {
-            return {
-                imageUrl: './Images/Træ 0.png'
-            }
-        },
-        methods: {
-            changeImage() {
-            const images = [
-                './Images/Træ 0.png',
-                './Images/Træ 1.png',
-                './Images/Træ 2.png',
-                './Images/Træ 3.png',
-                './Images/Træ 4.png',
-                './Images/Træ 5.png'
-            ];
-            const currentIndex = images.indexOf(this.imageUrl);
-            this.imageUrl = images[(currentIndex + 1) % images.length];
-            }
-        }
-    });
-
-    app.mount('#app');
-</script>
 <script>
     // Fetch JSON-data fra Flask-backenden
     fetch('http://127.0.0.1:5001/')
@@ -106,5 +89,6 @@
     });
 </script>
 <script src="DailyGoal.js"></script>
+<script src="Phase.js"></script>
 </body>
 </html>
