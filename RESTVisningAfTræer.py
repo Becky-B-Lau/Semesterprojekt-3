@@ -13,7 +13,7 @@ def index():
     phase = Database.read_last_phase()
     if phase is not None:
         print(f"Phase returned by database: {phase}")  # Debug i Flask-konsollen
-        return jsonify({"Phase": phase})  # Returner JSON
+        return jsonify({"phase": phase})  # Returner JSON
     else:
         print("No data found in database.")  # Debug i Flask-konsollen
         return jsonify({"error": "No data found"}), 404
