@@ -48,8 +48,19 @@
         
         </div>
     </div>
-</body>
-</html>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="Text">
+    <p>Dit nuværende</p>
+    <p>træ er i fase</p>
+    <p>{{ achievedCount }}/5.</p>
+    </div>
 <script>
     const app = Vue.createApp({
         data() {
@@ -75,19 +86,7 @@
     app.mount('#app');
 </script>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<div class="Text">
-<p>Dit nuværende</p>
-<p>træ er i fase</p>
-<p>{{ achievedCount }}/5.</p>
-</div>
+
 <script>
     // Fetch JSON-data fra Flask-backenden
     fetch('http://127.0.0.1:5001/')
