@@ -41,6 +41,4 @@ createApp({
             // Genopfrisk fase hver 5. sekund
             setInterval(this.fetchPhase, 5000);
         }
-    });
-
-    app.mount('#appimages');
+    }).mount('#appimages');
