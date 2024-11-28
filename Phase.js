@@ -1,5 +1,4 @@
-const appImage = Vue;
-createApp({
+const appImage = Vue.createApp({
     data() {
             return {
                 phase: 0, // Standard fase (hentes fra databasen)
@@ -30,7 +29,7 @@ createApp({
                     './Images/Træ 5.png'
                 ];
             
-                this.imageUrl = images[this.phase] || './Images/Træ 0.png'; // Standardbillede hvis fase er uden for rækkevidde
+                this.imageUrl = images[this.phase] || images[0]; // Vælg billede ud fra fase
             }
         },
         mounted() {

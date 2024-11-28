@@ -9,6 +9,7 @@ createApp({
             chart: null, // Chart.js reference
             achievedCount: 0, // Antal gange målet er nået
             images: [ // Liste over billeder
+                './Images/Træ 0.png',
                 './Images/Træ 1.png',
                 './Images/Træ 2.png',
                 './Images/Træ 3.png',
