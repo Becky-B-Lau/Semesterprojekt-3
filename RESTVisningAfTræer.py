@@ -3,12 +3,12 @@ import Database
 from flask_cors import CORS
 
 
-app = Flask(__name__)
-CORS(app)
+appImage = Flask(__name__)
+CORS(appImage)
 
 # Server index-siden
 
-@app.route('/', methods=['GET'])
+@appImage.route('/', methods=['GET'])
 def index():
     phase = Database.read_last_phase()
     if phase is not None:
@@ -19,4 +19,4 @@ def index():
         return jsonify({"error": "No data found"}), 404
     
 if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+    appImage.run(debug=True, port=5002)
