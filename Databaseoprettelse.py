@@ -24,7 +24,9 @@ def create_table(connection):
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS steps (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                steps INT NOT NULL
+                steps INT NOT NULL,
+                phase INT NOT NULL,
+                date Char(10) NOT NULL
             )
         ''')
         print("Tabellen 'steps' er oprettet!")

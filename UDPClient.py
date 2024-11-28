@@ -4,10 +4,10 @@ from sense_hat import SenseHat
 from datetime import datetime, timedelta
 import threading
 import time
-
+import Database
 
 serverName =  "" #IP addresse på den server som din computer er på
-serverPort = 5000
+serverPort = 5001
 clientSocket = socket(AF_INET, SOCK_DGRAM)
 
 print("The Client is ready to send")
@@ -17,7 +17,7 @@ app = Flask(__name__)
 sense = SenseHat()
 
 # Variabler til skridttæller
-step_count = 0  # Holder styr på antal skridt
+step_count = Database.read_last_step()  # Holder styr på antal skridt
 goal = 10000  # Dagligt mål for skridt
 threshold = 1.5  # Accelerationsændringstærskel
 previous_x, previous_y, previous_z = 0, 0, 0  # Tidligere acceleration
