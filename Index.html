@@ -40,18 +40,17 @@
                     <p>Skridt {{ steps }}</p>
                     <p>Mål: {{ goal }}</p>
                     <p>Procent: {{ percentage }}%</p> 
-                  
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="appimages" class="container">
+    <div id="appimage" class="container">
         <div class="row">
             <div class="col-md-6">
                 <h1>Fase-baseret billedskift</h1>
                 <p>Aktuel fase: {{ phase }}</p>
-                <img :src="imageUrl" alt="Træ billede" class="image" />
+                <img :src="imageUrl" alt="Træ billede" v-if="imageUrl" />
             </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
-const { createApp } = Vue;
-
+const appImage = Vue;
 createApp({
     data() {
             return {
@@ -41,4 +40,4 @@ createApp({
             // Genopfrisk fase hver 5. sekund
             setInterval(this.fetchPhase, 5000);
         }
-    }).mount('#appimages');
+    }).mount('#appimage');
