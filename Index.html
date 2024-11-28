@@ -35,14 +35,6 @@
                 </div>
             </div>
         </div>
-        <div class="container"></div>
-        <div class="row">
-            <div class="Text">
-                <p>Dit nuværende</p>
-                <p>træ er i fase</p>
-                <p>{{ achievedCount }}/5.</p>
-            </div>
-        </div>
         <div id="app" class="container">
             <div class="row">
                 <!-- Vue-dynamisk boks -->
@@ -56,8 +48,14 @@
             </div>
         </div>
     </div>
-    
-</body>
+    <div class="container"></div>
+        <div class="row">
+            <div class="Text">
+                <p>Dit nuværende</p>
+                <p>træ er i fase</p>
+                <p>{{ achievedCount }}/5.</p>
+            </div>
+        </div>
 </html>
 <script>
     const app = Vue.createApp({
@@ -84,7 +82,6 @@
 
     app.mount('#app');
 </script>
-</div>
 <script>
     fetch('http://127.0.0.1:5000/')
     .then(response => {
@@ -108,4 +105,5 @@
         document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
     });
 </script>
+</body>
 </html>
