@@ -1,19 +1,33 @@
 <!DOCTYPE html>
-<html lang="da">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Min Simpel Side</title>
+    <link rel="stylesheet" href="StyleSheetKalender.css">
+    <title>Dynamisk Kalender</title>
 </head>
 <body>
-    <header>
-        <h1>Velkommen til min side</h1>
-    </header>
-    <main>
-        <p>Dette er en simpel HTML-side. Den har kun en overskrift og lidt tekst.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 Mit Navn</p>
-    </footer>
+
+<h1>Kalender over tidligere mål</h1>
+
+<div class="month">      
+  <ul>
+    <li class="prev" onclick="changeMonth(-1)">&#10094;</li>
+    <li class="next" onclick="changeMonth(1)">&#10095;</li>
+    <li id="monthYear"></li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li>Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days" id="days"></ul>
+
+<script src="Kalender.js"></script>
 </body>
 </html>

@@ -99,6 +99,18 @@ def read_last_phase():
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
         return None
+    
+def read_last_date():
+    try:
+        connection = connect_to_database()  # Funktion til at oprette forbindelse
+        cursor = connection.cursor()
+        cursor.execute('SELECT date FROM steps WHERE step >= 10000 ORDER BY date DESC')
+        row = cursor.fetchone()
+        connection.close()
+        return row[0] if row else None  # Returner værdien af "steps"
+    except Exception as e:
+        print(f"Fejl ved læsning af data: {e}")
+        return None
 
 # Main program
 if __name__ == "__main__":

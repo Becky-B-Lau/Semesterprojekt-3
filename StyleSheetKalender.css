@@ -1,0 +1,118 @@
+* {box-sizing: border-box;}
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+.month ul {
+  margin: 0;
+  padding: 0;
+}
+
+.month ul li {
+  color: white;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.month .prev {
+  float: left;
+  padding-top: 10px;
+}
+
+.month .next {
+  float: right;
+  padding-top: 10px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 kolonner */
+    gap: 10px; /* Afstand mellem firkanterne */
+    padding: 20px; /* Indrykning for hele kalenderen */
+    justify-items: center; /* Centrer hver boks */
+}
+/* Grøn baggrund til dage med 10.000+ skridt */
+.days li.green {
+  background-color: #4CAF50; /* Grøn farve */
+  color: white;
+  border-color: #388E3C;
+}
+
+/* Rød baggrund til dage med under 10.000 skridt */
+.days li.red {
+  background-color: #F44336; /* Rød farve */
+  color: white;
+  border-color: #D32F2F;
+}
+
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 kolonner */
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+.month {
+    padding: 20px;
+    background: #1abc9c;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    border-radius: 10px;
+}
+
+.weekdays li {
+    display: inline-block;
+    width: 50px; /* Samme bredde som dagene */
+    height: 50px; /* Samme højde som dagene */
+    line-height: 50px; /* Centrer tekst */
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin: 20px; /* Øg afstanden mellem ugedage */
+}
+
+.days li {
+    list-style-type: none;
+    width: 70px; /* Bredde på firkanten */
+    height: 70px; /* Højde på firkanten */
+    display: flex; /* Brug flexbox til at centrere */
+    align-items: center; /* Centrer lodret */
+    justify-content: center; /* Centrer vandret */
+    font-size: 16px; /* Tekststørrelse */
+    color: #777; /* Tekstfarve */
+    border: 2px solid rgb(124, 124, 124); /* Sort kant */
+    border-radius: 10px; /* Runde hjørner */
+    background-color: #f4f4f4; /* Baggrundsfarve */
+}
+
+.days li.past {
+    background-color: #d4f7d4; /* Lys grøn farve for tidligere dage */
+}
+
+.days li.active {
+    background-color: white; /* Hvid baggrund for den nuværende dag */
+    font-weight: bold; /* Fed tekst */
+}
+
+.days li.empty {
+    visibility: hidden; /* Skjul tomme felter */
+}
+
+
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+  .weekdays li, .days li {width: 13.1%;}
+}
+
+@media screen and (max-width: 420px) {
+  .weekdays li, .days li {width: 12.5%;}
+  .days li .active {padding: 2px;}
+}
+
+@media screen and (max-width: 290px) {
+  .weekdays li, .days li {width: 12.2%;}
+}
