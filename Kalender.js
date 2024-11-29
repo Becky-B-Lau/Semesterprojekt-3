@@ -8,6 +8,10 @@ const monthNames = [
     "July", "August", "September", "October", "November", "December"
 ];
 
+// URL til API (Flask-server)
+const API_URL = "http://127.0.0.1:5001/"; // Endpoint til at hente data
+
+// Render kalenderen
 function renderCalendar(month, year) {
     const daysContainer = document.getElementById("days");
     const monthYear = document.getElementById("monthYear");
@@ -28,7 +32,7 @@ function renderCalendar(month, year) {
     // Udfyld tomme pladser før den første dag i måneden
     for (let i = 0; i < adjustedFirstDay; i++) {
         const emptyCell = document.createElement("li");
-        emptyCell.classList.add("empty"); // Tilføj en klasse til tomme felter, hvis styling er nødvendig
+        emptyCell.classList.add("empty");
         daysContainer.appendChild(emptyCell);
     }
 
@@ -45,16 +49,42 @@ function renderCalendar(month, year) {
         ) {
             dayCell.classList.add("active");
         } 
-        // Marker tidligere dage
-        else if (
-            (year < today.getFullYear()) ||
-            (year === today.getFullYear() && month < today.getMonth()) ||
-            (year === today.getFullYear() && month === today.getMonth() && day < today.getDate())
-        ) {
-            dayCell.classList.add("past");
-        }
+
+        // Tilføj data-dato-attribut
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        dayCell.setAttribute("data-date", dateStr);
 
         daysContainer.appendChild(dayCell);
+    }
+
+    // Hent data fra API og opdater farverne
+    fetchStepData(month, year);
+}
+
+// Hent skridttællerdata fra API
+async function fetchStepData(month, year) {
+    try {
+        const response = await fetch(API_URL);
+        const data = await response.json();
+
+        // Gennemgå kalenderens dage og sammenlign med API-data
+        document.querySelectorAll(".days li").forEach((dayElement) => {
+            const date = dayElement.getAttribute("data-date");
+            if (date) {
+                const stepData = data.find((entry) => entry.date === date); // Find data for datoen
+
+                if (stepData) {
+                    // Marker dag som grøn eller rød baseret på skridtdata
+                    if (stepData.step >= 10000) {
+                        dayElement.classList.add("green");
+                    } else {
+                        dayElement.classList.add("red");
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error("Fejl ved hentning af skridttællerdata:", error);
     }
 }
 
