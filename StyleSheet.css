@@ -2,6 +2,20 @@ body {
     background-color: #F6E9B2; /* Baggrundsfarve */
 }
 
+.navbar {
+    background: linear-gradient(#7ABA78, #F6E9B2); /* Baggrundsfarve */ 
+}
+
+.nav-link, .navbar-brand {
+    color: #0A6847; /* Tekstfarve */
+    text-decoration: none; /* Fjern understregning */
+    margin: 0 10px; /* Afstand mellem elementerne */
+}
+
+.nav-link:hover, .navbar-brand:hover {
+    color: #138f64; /* Tekstfarve ved hover */
+}
+
 .box {
     width: 150px; /* Boksens bredde */
     height: 150px; /* Boksens højde */
@@ -29,20 +43,20 @@ body {
 }
 
 .box h1 {
-    font-size: 50px;
+    font-size: 50px; /* Overskriftsstørrelse */
 }
 
 .box p {
-    font-size: 20px;
+    font-size: 20px; /* Tekststørrelse */
 }
 
 .box h2 {
     margin-top: 5px; /* Laver lidt afstand mellem h1 og h2 */
-    font-size: 60px;
+    font-size: 60px; /* Overskriftsstørrelse */
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-    color: #0A6847;
+    color: #0A6847; /* Tekstfarve */
 }
 
 .container {
@@ -60,7 +74,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .col {
-    padding: 0%;
+    padding: 0%; /* Fjern padding */
 }
 
 .container2 {
@@ -72,12 +86,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .image {
     position: absolute; /* Gør det muligt at placere billedet præcist */
-    width: auto; /* Fast bredde */
-    height: 300%; /* Bevarer billedets proportioner */
+    height: 300%; /* Gør billedet større */
+    width: auto; /* Sørg for, at billedet tager hele bredden */
     left: 50%; /* Placerer billedet midt horisontalt */
     transform: translateX(-50%); /* Justerer billedet, så det er helt centreret horisontalt */
     border-radius: 50%; /* Afrundede hjørner, hvis du ønsker det */
-    margin-top: 10%;
+    margin-top: 10%; /* Afstand til toppen */
 }   
 
 .Text {
