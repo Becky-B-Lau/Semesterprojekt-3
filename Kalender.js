@@ -19,11 +19,18 @@ function renderCalendar(month, year) {
     daysContainer.innerHTML = "";
 
     // Find første dag i måneden
-    const firstDay = new Date(year, month, 1).getDay();
+    const firstDay = new Date(year, month, 1).getDay(); // Søndag = 0, Mandag = 1, osv.
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    // Juster første dag til at starte på mandag (om nødvendigt)
-    const adjustedFirstDay = (firstDay + 6) % 7;
+    // Tilpas første dag til at starte ugen på mandag
+    const adjustedFirstDay = (firstDay === 0 ? 6 : firstDay - 1);
+
+    // Udfyld tomme pladser før den første dag i måneden
+    for (let i = 0; i < adjustedFirstDay; i++) {
+        const emptyCell = document.createElement("li");
+        emptyCell.classList.add("empty"); // Tilføj en klasse til tomme felter, hvis styling er nødvendig
+        daysContainer.appendChild(emptyCell);
+    }
 
     // Udfyld dage i måneden
     for (let day = 1; day <= daysInMonth; day++) {

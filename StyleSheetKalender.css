@@ -84,6 +84,10 @@ body {font-family: Verdana, sans-serif;}
     font-weight: bold; /* Fed tekst */
 }
 
+.days li.empty {
+    visibility: hidden; /* Skjul tomme felter */
+}
+
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
   .weekdays li, .days li {width: 13.1%;}
