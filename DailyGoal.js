@@ -23,9 +23,6 @@ createApp({
                 // Beregn procentdel i frontend
                 this.percentage = Math.min((this.steps / this.goal) * 100, 100); // Begræns til 100%
                
-                // Kontrollér, om målet er nået
-                this.checkGoalAchieved();
-
                 // Opdater diagram
                 this.updateChart();
             } catch (error) {

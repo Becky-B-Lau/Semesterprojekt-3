@@ -13,8 +13,8 @@ serverAddress = ('', serverPort)
 serverSocket.bind(serverAddress)
 
 print("The server is ready to receive")
-# Definer tid for nulstilling (f.eks. kl. 10:19)
-reset_time = datetime.now().replace(hour=11, minute=5, second=0, microsecond=0)
+# Definer tid for nulstilling (f.eks. kl. 00)
+reset_time = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
 if reset_time < datetime.now():
     # Hvis tidspunktet allerede er passeret i dag, sæt det til næste dag
     reset_time += timedelta(days=1)
