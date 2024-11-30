@@ -104,7 +104,7 @@ def read_last_date():
     try:
         connection = connect_to_database()  # Funktion til at oprette forbindelse
         cursor = connection.cursor()
-        cursor.execute('SELECT date FROM steps WHERE step >= 10000 ORDER BY date DESC')
+        cursor.execute('SELECT date FROM steps WHERE steps >= 10000 ORDER BY date DESC')
         row = cursor.fetchone()
         connection.close()
         return row[0] if row else None  # Returner værdien af "steps"

@@ -10,7 +10,7 @@ def step_index():
     step = Database.read_last_step()
     phase = Database.read_last_phase()
     date = Database.read_last_date()
-    if step is not None:
+    if step is not None and phase is not None:
         print(f"Step returned by database: {step}")  # Debug i Flask-konsollen
         print(f"Phase returned by database: {phase}")  # Debug i Flask-konsollen
         return jsonify({"step": step, "phase": phase, "date": date})  # Returner JSON

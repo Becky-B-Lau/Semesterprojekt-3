@@ -7,16 +7,6 @@ createApp({
             goal: 10000, // Dagligt mål
             percentage: 0, // Procentdel
             chart: null, // Chart.js reference
-            achievedCount: 0, // Antal gange målet er nået
-            images: [ // Liste over billeder
-                './Images/Træ 0.png',
-                './Images/Træ 1.png',
-                './Images/Træ 2.png',
-                './Images/Træ 3.png',
-                './Images/Træ 4.png',
-                './Images/Træ 5.png'
-            ],
-            currentImage: null // Det billede, der aktuelt vises
             
         };
     },
@@ -40,21 +30,6 @@ createApp({
                 this.updateChart();
             } catch (error) {
                 console.error('Fejl ved hentning af skridttællerdata:', error);
-            }
-        },
-
-        // Kontrollér, om målet er nået og vis nyt billede
-        checkGoalAchieved() {
-            const newAchievedCount = Math.floor(this.steps / this.goal);
-
-            // Hvis der er nye opnåelser, opdater billedet
-            if (newAchievedCount > this.achievedCount) {
-                this.achievedCount = newAchievedCount;
-
-                // Opdater billedet, hvis der stadig er flere billeder
-                if (this.achievedCount <= this.images.length) {
-                    this.currentImage = this.images[this.achievedCount - 1];
-                }
             }
         },
 
