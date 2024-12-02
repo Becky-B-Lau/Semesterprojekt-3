@@ -10,6 +10,7 @@ createApp({
             
         };
     },
+    
     methods: {
         // Hent data fra Flask-serveren
         async fetchSteps() {

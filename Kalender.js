@@ -36,11 +36,25 @@ function renderCalendar(month, year) {
         daysContainer.appendChild(emptyCell);
     }
 
-    // Udfyld dage i måneden
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCell = document.createElement("li");
-        dayCell.textContent = day;
-
+        const dayText = document.createElement("span");
+        dayText.textContent = day; // Sæt dagens nummer i span
+        dayCell.appendChild(dayText);
+    
+        // Beregn datoen for den aktuelle dag
+        const currentDate = new Date(year, month, day);
+    
+        // Marker tidligere dage
+        if (currentDate < today) {
+            dayCell.classList.add("past-circle"); // Tidligere dage får en cirkel
+        }
+    
+        // Marker fremtidige dage
+        if (currentDate > today) {
+            dayCell.classList.add("future"); // Fremtidige dage bliver grå
+        }
+    
         // Marker den aktuelle dag
         if (
             day === today.getDate() &&
@@ -48,12 +62,12 @@ function renderCalendar(month, year) {
             year === today.getFullYear()
         ) {
             dayCell.classList.add("active");
-        } 
-
+        }
+    
         // Tilføj data-dato-attribut
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         dayCell.setAttribute("data-date", dateStr);
-
+    
         daysContainer.appendChild(dayCell);
     }
 
@@ -61,25 +75,32 @@ function renderCalendar(month, year) {
     fetchStepData(month, year);
 }
 
-// Hent skridttællerdata fra API
 async function fetchStepData(month, year) {
     try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+        const response = await fetch('http://127.0.0.1:5001/'); // Hent data fra API
+        const data = await response.json(); // Konverter data til JSON
 
-        // Gennemgå kalenderens dage og sammenlign med API-data
+        // Debug: Log API-data for at sikre, at det er korrekt
+        console.log("API data:", data);
+
+        // Gennemgå alle dage i kalenderen
         document.querySelectorAll(".days li").forEach((dayElement) => {
-            const date = dayElement.getAttribute("data-date");
+            const date = dayElement.getAttribute("data-date"); // Hent data-dato-attribut
             if (date) {
-                const stepData = data.find((entry) => entry.date === date); // Find data for datoen
+                // Find data for den aktuelle dag
+                const stepData = data.find((entry) => entry.date === date);
 
                 if (stepData) {
-                    // Marker dag som grøn eller rød baseret på skridtdata
+                    // Marker dag baseret på skridttællerdata
                     if (stepData.step >= 10000) {
-                        dayElement.classList.add("green");
+                        dayElement.classList.add("goal-met"); // Grøn cirkel
+                        console.log(`${date}: Grøn (Nået mål)`);
                     } else {
-                        dayElement.classList.add("red");
+                        dayElement.classList.add("goal-not-met"); // Rød cirkel
+                        console.log(`${date}: Rød (Ikke nået mål)`);
                     }
+                } else {
+                    console.log(`${date}: Ingen data`);
                 }
             }
         });

@@ -2,8 +2,33 @@ body {
   background-color: #F6E9B2; /* Baggrundsfarve */
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+.back-button {
+  position: absolute; /* Placerer knappen relativt til vinduet */
+  top: 20px; /* Juster afstand fra toppen */
+  left: 20px; /* Juster afstand fra venstre side */
+  padding: 10px 20px; /* Indre afstand for knappen */
+  background-color: #0A6847; /* Baggrundsfarve */
+  color: white; /* Tekstfarve */
+  text-decoration: none; /* Fjerner understregning */
+  border-radius: 5px; /* Runde hjørner */
+  font-size: 16px; /* Tekststørrelse */
+  font-family: Verdana, sans-serif; /* Skrifttype */
+  transition: background-color 0.3s; /* Glat overgang ved hover */
+  z-index: 1000; /* Sørger for, at knappen vises over andre elementer */
+}
+
+.back-button:hover {
+  background-color: #065D3A; /* Mørkere farve ved hover */
+}
+
+h1 {
+  margin-top: 80px; /* Tilføj afstand fra toppen til overskriften */
+  text-align: center; /* Centrer overskriften */
   color: #0A6847; /* Tekstfarve */
+}
+
+p, h2, h3, h4, h5, h6 {
+  color: rgb(48, 47, 47); /* Tekstfarve */
 }
 
 * {box-sizing: border-box;}
@@ -22,16 +47,29 @@ body {font-family: Verdana, sans-serif;}
   letter-spacing: 3px;
 }
 
+.month {
+  position: relative; /* Forældreelement, så vi kan placere pilene korrekt */
+  padding: 20px;
+  background: #7ABA78;
+  text-align: center;
+  font-size: 24px;
+  border-radius: 10px;
+}
+
 .month .prev {
-  float: left;
-  padding-top: 10px;
-  color: #0A6847;
+  position: absolute;
+  top: 50%; /* Centrerer lodret */
+  left: 10px; /* Placerer til venstre */
+  transform: translateY(-50%); /* Justerer for den lodrette centrering */
+  cursor: pointer; /* Ændrer musen til en hånd */
 }
 
 .month .next {
-  float: right;
-  padding-top: 10px;
-  color: #0A6847;
+  position: absolute;
+  top: 50%; /* Centrerer lodret */
+  right: 10px; /* Placerer til højre */
+  transform: translateY(-50%); /* Justerer for den lodrette centrering */
+  cursor: pointer; /* Ændrer musen til en hånd */
 }
 
 .days {
@@ -42,20 +80,6 @@ body {font-family: Verdana, sans-serif;}
     padding-top: 0%;
     justify-items: center; /* Centrer hver boks */
 }
-/* Grøn baggrund til dage med 10.000+ skridt */
-.days li.green {
-  background-color: #4CAF50; /* Grøn farve */
-  color: #0A6847;
-  border-color: #388E3C;
-}
-
-/* Rød baggrund til dage med under 10.000 skridt */
-.days li.red {
-  background-color: #F44336; /* Rød farve */
-  color: #0A6847;
-  border-color: #D32F2F;
-}
-
 
 .weekdays {
     display: grid;
@@ -64,14 +88,6 @@ body {font-family: Verdana, sans-serif;}
     padding: 10px 0;
     font-size: 16px;
     justify-items: center; /* Centrer hver ugedag */
-}
-
-.month {
-    padding: 20px;
-    background: #7ABA78;
-    text-align: center;
-    font-size: 24px;
-    border-radius: 10px;
 }
 
 .weekdays li {
@@ -89,17 +105,16 @@ body {font-family: Verdana, sans-serif;}
 }
 
 .days li {
-    list-style-type: none;
-    width: 70px; /* Bredde på firkanten */
-    height: 70px; /* Højde på firkanten */
-    display: flex; /* Brug flexbox til at centrere */
-    align-items: center; /* Centrer lodret */
-    justify-content: center; /* Centrer vandret */
-    font-size: 16px; /* Tekststørrelse */
-    color: #0A6847; /* Tekstfarve */
-    border: 2px solid #0A6847; /* Kant omkring firkanten */ 
-    border-radius: 10px; /* Runde hjørner */
-    background-color: #f4f4f4; /* Baggrundsfarve */
+  position: relative; /* Gør hver firkant til et referencepunkt */
+  display: flex; /* Brug flexbox til at organisere indhold */
+  align-items: center; /* Centrer teksten lodret */
+  justify-content: center; /* Centrer teksten vandret */
+  width: 70px; /* Gør hver dag til en firkant */
+  height: 70px; /* Samme højde som bredde */
+  border: 2px solid grey; /* Bevar kant omkring firkanten */
+  border-radius: 10px; /* Runde hjørner */
+  background-color: #f4f4f4; /* Baggrundsfarve på firkanten */
+  margin: 5px; /* Afstand mellem firkanterne */
 }
 
 .days li.past {
@@ -115,6 +130,44 @@ body {font-family: Verdana, sans-serif;}
     visibility: hidden; /* Skjul tomme felter */
 }
 
+.days li.future {
+  background-color: #dcdcdc; /* Lys grå baggrund */
+  color: #a0a0a0; /* Lys grå tekstfarve */
+}
+
+.days li.past-circle::after {
+  content: ""; /* Skaber cirklen */
+  position: absolute; /* Placer cirklen i forhold til .days li */
+  top: 5px; /* Placer den i øverste højre hjørne */
+  right: 5px; /* Juster afstand fra højre */
+  width: 15px; /* Diameter på cirklen */
+  height: 15px; /* Diameter på cirklen */
+  background-color: grey; /* Farve på cirklen */
+  border-radius: 50%; /* Gør den rund */
+  z-index: 1; /* Sørger for, at cirklen ikke skjules */
+}
+
+.days li.goal-met::after {
+  background-color: #4CAF50; /* Grøn cirkel for nået mål */
+}
+
+.days li.goal-not-met::after {
+  background-color: #F44336; /* Rød cirkel for ikke nået mål */
+}
+
+.days li span {
+  position: relative; /* Sørg for, at teksten ikke påvirkes af cirklen */
+  z-index: 2; /* Placerer teksten over cirklen, hvis nødvendigt */
+  font-size: 16px; /* Størrelse på dato-teksten */
+  color: rgb(30, 30, 30); /* Tekstfarve */
+}
+
+.month .prev, .month .next {
+  float: left; /* Holder dem på hver sin side */
+  padding-top: 10px;
+  color: #0A6847; /* Tekstfarve */
+  cursor: pointer; /* Ændrer musen til en hånd, når man holder over */
+}
 
 /* Add media queries for smaller screens */
 @media screen and (max-width:720px) {
