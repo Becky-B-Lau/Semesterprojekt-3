@@ -26,7 +26,8 @@ def create_table(connection):
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 steps INT NOT NULL,
                 phase INT NOT NULL,
-                date Char(10) NOT NULL
+                date Char(10) NOT NULL,
+                counter_tree INT NOT NULL
             )
         ''')
         print("Tabellen 'steps' er oprettet!")

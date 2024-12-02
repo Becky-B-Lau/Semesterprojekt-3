@@ -29,7 +29,7 @@ def connect_to_database():
       #  print(f"{cursor.rowcount} række(r) indsat.")
     #except Error as e:
      #   print(f"Fejl ved indsættelse af data: {e}")
-def insert_data(steps, phase, date):
+def insert_data(steps, phase, date, Tree):
     try:
         # Opret en forbindelse og cursor
         connection = connect_to_database()
@@ -111,6 +111,8 @@ def read_last_date():
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
         return None
+    
+    
 
 # Main program
 if __name__ == "__main__":
