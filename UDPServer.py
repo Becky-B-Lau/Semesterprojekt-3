@@ -21,6 +21,9 @@ if reset_time < datetime.now():
 
 # Definer en margin på 1 minut
 margin = timedelta(seconds=30)
+stepFromDatabase = Database.read_last_step()
+if stepFromDatabase is None:
+    stepFromDatabase = 0  # Standardværdi for stepFromDatabase
 
 phase = Database.read_last_phase()
 stepFromDatabase = Database.read_last_step()

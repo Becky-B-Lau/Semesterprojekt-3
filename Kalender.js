@@ -23,7 +23,7 @@ function renderCalendar(month, year) {
     daysContainer.innerHTML = "";
 
     // Find første dag i måneden
-    const firstDay = new Date(year, month, 1).getDay(); // Søndag = 0, Mandag = 1, osv.
+    const firstDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
     // Tilpas første dag til at starte ugen på mandag
@@ -36,19 +36,28 @@ function renderCalendar(month, year) {
         daysContainer.appendChild(emptyCell);
     }
 
-    // Udfyld dage i måneden
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCell = document.createElement("li");
-        dayCell.textContent = day;
+        const dayText = document.createElement("span");
+        dayText.textContent = day; // Sæt dagens nummer i span
+        dayCell.appendChild(dayText);
 
-        // Marker den aktuelle dag
+        // Beregn datoen for den aktuelle dag
+        const currentDate = new Date(year, month, day);
+
+        // Marker tidligere dage som standard rød
+        if (currentDate < today) {
+            dayCell.classList.add("past-default"); // Standard rød baggrund
+        }
+
+        // Marker den aktuelle dag som hvid
         if (
             day === today.getDate() &&
             month === today.getMonth() &&
             year === today.getFullYear()
         ) {
-            dayCell.classList.add("active");
-        } 
+            dayCell.classList.add("active"); // Hvid baggrund
+        }
 
         // Tilføj data-dato-attribut
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -61,30 +70,37 @@ function renderCalendar(month, year) {
     fetchStepData(month, year);
 }
 
-// Hent skridttællerdata fra API
 async function fetchStepData(month, year) {
     try {
-        const response = await fetch(API_URL);
-        const data = await response.json();
+        const response = await fetch(API_URL); // Hent data fra API
+        const data = await response.json(); // Konverter API-data til JSON
+        console.log("API data:", data); // Debug: Log API-data
 
-        // Gennemgå kalenderens dage og sammenlign med API-data
+        // Gennemgå alle dage i kalenderen
         document.querySelectorAll(".days li").forEach((dayElement) => {
-            const date = dayElement.getAttribute("data-date");
+            const date = dayElement.getAttribute("data-date"); // Hent data-dato-attribut
             if (date) {
-                const stepData = data.find((entry) => entry.date === date); // Find data for datoen
+                // Marker som standard rød for tidligere dage
+                const currentDate = new Date(date);
+                if (currentDate < today) {
+                    dayElement.classList.add("past-default"); // Rød som standard
+                }
 
-                if (stepData) {
-                    // Marker dag som grøn eller rød baseret på skridtdata
-                    if (stepData.step >= 10000) {
-                        dayElement.classList.add("green");
-                    } else {
-                        dayElement.classList.add("red");
+                // Gennemgå alle datoer i JSON-data
+                const relevantEntry = data.date.find((entry) => entry === date);
+
+                if (relevantEntry) {
+                    // Opdater til grøn, hvis målet er nået
+                    if (data.step >= 10000) {
+                        dayElement.classList.remove("past-default"); // Fjern rød
+                        dayElement.classList.add("goal-met"); // Grøn baggrund
+                        console.log(`${date}: Grøn (Nået mål)`);
                     }
                 }
             }
         });
     } catch (error) {
-        console.error("Fejl ved hentning af skridttællerdata:", error);
+        console.error("Fejl ved hentning af data:", error);
     }
 }
 
