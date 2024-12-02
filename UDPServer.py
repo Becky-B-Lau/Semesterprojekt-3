@@ -24,9 +24,14 @@ margin = timedelta(seconds=30)
 
 phase = Database.read_last_phase()
 stepFromDatabase = Database.read_last_step()
+if stepFromDatabase is None():
+    stepFromDatabase = 0
 if phase is None:
-    phase=0
+    phase = 0  # Standardværdi for phase
 
+Coutner_tree = Database.read_last_counter_tree()
+if Coutner_tree is None:
+    Coutner_tree = 0  # Standardværdi for phase
 try:
     while True:
         now = datetime.now()
@@ -53,8 +58,11 @@ try:
                 phase+=1
                 if (phase>5):
                     phase=0
+            if (phase==5):
+                Coutner_tree+=1
+            
             # Gem beskeden i tabellen "steps"
-            Database.insert_data(stepFromDatabase,phase, datetime.now())
+            Database.insert_data(stepFromDatabase,phase, datetime.now(),Coutner_tree)
            
 
         except ValueError:

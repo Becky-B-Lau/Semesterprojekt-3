@@ -29,16 +29,16 @@ def connect_to_database():
       #  print(f"{cursor.rowcount} række(r) indsat.")
     #except Error as e:
      #   print(f"Fejl ved indsættelse af data: {e}")
-def insert_data(steps, phase, date):
+def insert_data(steps, phase, date, counter_tree):
     try:
         # Opret en forbindelse og cursor
         connection = connect_to_database()
         cursor = connection.cursor()
 
         # Brug det rigtige kolonnenavn (tjek hvad din tabel bruger)
-        sql_query =  "INSERT INTO steps (steps, phase, date) VALUES (%s, %s, %s)"
+        sql_query =  "INSERT INTO steps (steps, phase, date, counter_tree) VALUES (%s, %s, %s,%s)"
         #"INSERT INTO steps (steps) VALUES (%s)"
-        cursor.execute(sql_query, (steps, phase, date))  # Tuple med én værdi
+        cursor.execute(sql_query, (steps, phase, date, counter_tree))  # Tuple med én værdi
 
         # Commit ændringerne
         connection.commit()
@@ -100,6 +100,17 @@ def read_last_phase():
         print(f"Fejl ved læsning af data: {e}")
         return None
     
+def read_last_counter_tree():
+    try:
+        connection = connect_to_database()  # Funktion til at oprette forbindelse
+        cursor = connection.cursor()
+        cursor.execute('SELECT counter_tree FROM steps ORDER BY id DESC LIMIT 1')  # Sorter efter id og hent sidste række
+        row = cursor.fetchone()
+        connection.close()
+        return row[0] if row else None  # Returner værdien af "steps"
+    except Exception as e:
+        print(f"Fejl ved læsning af data: {e}")
+        return None
 def read_last_date():
     try:
         connection = connect_to_database()  # Funktion til at oprette forbindelse
