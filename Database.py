@@ -116,12 +116,19 @@ def read_last_date():
         connection = connect_to_database()  # Funktion til at oprette forbindelse
         cursor = connection.cursor()
         cursor.execute('SELECT date FROM steps WHERE steps >= 10000 ORDER BY date DESC')
-        row = cursor.fetchone()
+        
+        # Hent alle rækker i stedet for kun én
+        rows = cursor.fetchall()
+        
+        # Luk forbindelsen
         connection.close()
-        return row[0] if row else None  # Returner værdien af "steps"
+        
+        # Ekstraher datoer fra rækkerne
+        return [row[0] for row in rows] if rows else []  # Returner en liste med datoer
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
-        return None
+        return []
+
 
 # Main program
 if __name__ == "__main__":
