@@ -114,13 +114,36 @@ def read_last_date():
     
     
 
+#this is to increment counter_tree only once (if row above is not 5)
+def read_second_last_phase():
+    try:
+        connection = connect_to_database()  # Establish a connection
+        cursor = connection.cursor()
+
+        # Fetch the second-last phase
+        query = """
+            SELECT phase 
+            FROM steps 
+            ORDER BY id DESC 
+            LIMIT 1 OFFSET 1
+        """
+        cursor.execute(query)
+        row = cursor.fetchone()
+
+        connection.close()
+        return row[0] if row else None  # Return the phase, or None if no second-last row exists
+    except Exception as e:
+        print(f"Error reading second-last phase: {e}")
+        return None
+
+
 # Main program
 if __name__ == "__main__":
     # Forbind til databasen
     conn = connect_to_database()
     if conn:
         # Indsæt eksempeldata
-        insert_data(conn, "2024-11-26", 5000)  # Ændr dato og antal skridt efter behov
+        insert_data(conn, "2024-11-26", 5000,0)  # Ændr dato og antal skridt efter behov
 
         # Læs data
         read_data(conn)
