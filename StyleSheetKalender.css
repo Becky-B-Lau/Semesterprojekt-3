@@ -105,54 +105,48 @@ body {font-family: Verdana, sans-serif;}
 }
 
 .days li {
-  position: relative; /* Gør hver firkant til et referencepunkt */
-  display: flex; /* Brug flexbox til at organisere indhold */
-  align-items: center; /* Centrer teksten lodret */
-  justify-content: center; /* Centrer teksten vandret */
-  width: 70px; /* Gør hver dag til en firkant */
-  height: 70px; /* Samme højde som bredde */
-  border: 2px solid grey; /* Bevar kant omkring firkanten */
-  border-radius: 10px; /* Runde hjørner */
-  background-color: #f4f4f4; /* Baggrundsfarve på firkanten */
-  margin: 5px; /* Afstand mellem firkanterne */
+  width: 50px; /* Justér efter behov */
+  height: 50px; /* Justér efter behov */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  border-radius: 5px; /* Ingen cirkel */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.days li.past {
-    background-color: #d4f7d4; /* Lys grøn farve for tidligere dage */
+.days li.goal-met {
+  background-color: #7ABA78; /* Grøn baggrund for nået mål */
+  color: white; /* Tekstfarve */
 }
 
-.days li.active {
-    background-color: white; /* Hvid baggrund for den nuværende dag */
-    font-weight: bold; /* Fed tekst */
+.days li.goal-not-met {
+  background-color: #E57373; /* Rød baggrund for ikke nået mål */
+  color: white; /* Tekstfarve */
 }
 
 .days li.empty {
-    visibility: hidden; /* Skjul tomme felter */
+  background-color: transparent; /* Tomme pladser forbliver usynlige */
+  border: none;
+  pointer-events: none; /* Ikke klikbare */
+}
+
+.days li.past-default {
+  background-color: #E57373; /* Rød baggrund */
+  color: white;
+}
+
+.days li.active {
+  background-color: white; /* Hvid baggrund */
+  color: black; /* Sort tekst */
+  border: 1px solid #ccc; /* Tilføj evt. en kant for at fremhæve dagen */
 }
 
 .days li.future {
   background-color: #dcdcdc; /* Lys grå baggrund */
   color: #a0a0a0; /* Lys grå tekstfarve */
-}
-
-.days li.past-circle::after {
-  content: ""; /* Skaber cirklen */
-  position: absolute; /* Placer cirklen i forhold til .days li */
-  top: 5px; /* Placer den i øverste højre hjørne */
-  right: 5px; /* Juster afstand fra højre */
-  width: 15px; /* Diameter på cirklen */
-  height: 15px; /* Diameter på cirklen */
-  background-color: grey; /* Farve på cirklen */
-  border-radius: 50%; /* Gør den rund */
-  z-index: 1; /* Sørger for, at cirklen ikke skjules */
-}
-
-.days li.goal-met::after {
-  background-color: #4CAF50; /* Grøn cirkel for nået mål */
-}
-
-.days li.goal-not-met::after {
-  background-color: #F44336; /* Rød cirkel for ikke nået mål */
 }
 
 .days li span {
