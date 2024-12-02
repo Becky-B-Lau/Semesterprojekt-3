@@ -15,25 +15,60 @@ def connect_to_database():
             print("Forbundet til databasen!")
         return connection
     except Error as e:
-        print(f"Fejl: {e}")
+        print(f"Fejl ved forbindelse til databasen: {e}")
         return None
 
-def create_table(connection):
+
+def create_tables_if_not_exist(connection):
     try:
         cursor = connection.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS steps (
-                id INT AUTO_INCREMENT PRIMARY KEY,
-                steps INT NOT NULL,
-                phase INT NOT NULL,
-                date Char(10) NOT NULL
-            )
-        ''')
-        print("Tabellen 'steps' er oprettet!")
+
+        # Funktion til at tjekke, om en tabel eksisterer
+        def table_exists(table_name):
+            cursor.execute(f"SHOW TABLES LIKE '{table_name}'")
+            result = cursor.fetchone()
+            return result is not None
+
+        # Tjek og opret 'steps'-tabellen, hvis den ikke findes
+        if not table_exists('steps'):
+            cursor.execute('''
+                CREATE TABLE steps (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    steps INT NOT NULL,
+                    phase INT NOT NULL,
+                    date CHAR(10) NOT NULL,
+                    counter_tree INT NOT NULL
+                )
+            ''')
+            print("Tabellen 'steps' blev oprettet!")
+        else:
+            print("Tabellen 'steps' findes allerede. Ingen handling udført.")
+
+        # Tjek og opret 'daily_quote'-tabellen, hvis den ikke findes
+        if not table_exists('daily_quote'):
+            cursor.execute('''
+                CREATE TABLE daily_quote (
+                    id INT AUTO_INCREMENT PRIMARY KEY,
+                    date CHAR(10) NOT NULL,
+                    quote TEXT NOT NULL,
+                    author TEXT NOT NULL
+                )
+            ''')
+            print("Tabellen 'daily_quote' blev oprettet!")
+        else:
+            print("Tabellen 'daily_quote' findes allerede. Ingen handling udført.")
     except Error as e:
-        print(f"Fejl ved oprettelse af tabel: {e}")
+        print(f"Fejl ved oprettelse af tabeller: {e}")
+    finally:
+        cursor.close()  # Sørg for at lukke cursoren
+
+
 # Main program
 if __name__ == "__main__":
     conn = connect_to_database()
-    create_table(conn)  # Opret tabellen
-    conn.close()
+    if conn:  # Kun fortsæt, hvis forbindelsen er etableret
+        create_tables_if_not_exist(conn)  # Kald den rette funktion
+        conn.close()  # Luk forbindelsen, når vi er færdige
+        print("Forbindelsen til databasen er lukket.")
+    else:
+        print("Kunne ikke oprette forbindelse til databasen.")
