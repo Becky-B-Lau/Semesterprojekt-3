@@ -24,7 +24,7 @@ margin = timedelta(seconds=30)
 
 phase = Database.read_last_phase()
 stepFromDatabase = Database.read_last_step()
-if stepFromDatabase is None():
+if stepFromDatabase is None:
     stepFromDatabase = 0
 if phase is None:
     phase = 0  # Standardværdi for phase
