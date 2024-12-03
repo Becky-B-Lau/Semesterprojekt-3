@@ -61,9 +61,11 @@
             <h4 class="mb-2 mb-md-0 mr-md-2">Din fase er {{phase}}/5</h4>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
-        <div id="quote-section" class="container text-center my-4">
-            <h3>Dagligt Motivationscitat</h3>
-            <p id="daily-quote">Indlæser citat...</p>
+        <div id="appQuote">
+            <div id="quote-section" class="container text-center my-4">
+                <h3>Dagligt Motivationscitat</h3>
+                <p id="daily-quote">{{qoute}}</p>
+            </div>
         </div>
     </div>
 

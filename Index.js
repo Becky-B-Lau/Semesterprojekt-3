@@ -1,5 +1,5 @@
 // URL til 3. parts service for citater
-const QUOTE_API_URL = "https://zenquotes.io/api/random"; // Eksempel API til citater
+const QUOTE_API_URL = "https</meta>://zenquotes.io/api/random"; // Eksempel API til citater
 
 // Funktion til at hente citat
 function fetchDailyQuote() {
