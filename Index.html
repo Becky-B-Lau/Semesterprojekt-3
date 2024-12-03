@@ -14,16 +14,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <!-- Axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="StyleSheetIndex.css">
     <link rel="stylesheet" href="StyleSheet.css">
-    <link rel="stylesheet" href="Index.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#">Gå for et træ</a>
+            <a class="navbar-brand" href="#"><b>Gå for et træ</b></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
+                    <div style="width: 30px; height: 3px; background-color: #0A6847;"></div>
+                    <div style="width: 30px; height: 3px; background-color: #0A6847; margin: 5px 0;"></div>
+                    <div style="width: 30px; height: 3px; background-color: #0A6847; margin: 5px 0;"></div>
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
@@ -40,45 +44,30 @@
     <div class="container">
         <div class="row">
             <!-- Boks til skridt -->
-            
             <div class="box" id="box1">
-                <h1 id="last-step">Indlæser...</h1>
-                
+                <h1 id="last-step">Indlæser...</h1>                
                 <p>Skridt</p>
             </div>
-            <!-- Diagram boks -->
-            <div class="col">
-                <div class="box" id="box2">
-                    <canvas id="stepsChart"></canvas>
+            <div id="app">                
+                <!-- Diagram boks -->
+                <div class="col">
+                    <div class="box" id="box2">
+                        <canvas id="stepsChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="app" class="container">
-            <div class="row">
-                <!-- Vue-dynamisk boks -->
-                <div class="col-md-6">
-                    <p>Skridt {{ steps }}</p>
-                    <p>Mål: {{ goal }}</p>
-                    <p>Procent: {{ percentage }}%</p> 
-                </div>
-            </div>
+        <div id="appimage" class="d-flex flex-column flex-md-row align-items-center">
+            <h4 class="mb-2 mb-md-0 mr-md-2">Din fase er {{phase}}/5</h4>
+            <img :src="imageUrl" alt="Træ billede" id="Træ"/>
+        </div>
+        <div id="quote-section" class="container text-center my-4">
+            <h3>Dagligt Motivationscitat</h3>
+            <p id="daily-quote">Indlæser citat...</p>
         </div>
     </div>
 
-    <div id="quote-section" class="container text-center my-4">
-        <h3>Dagligt Motivationscitat</h3>
-        <p id="daily-quote">Indlæser citat...</p>
-    </div>
-
-    <div id="appimage" class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>Fase-baseret billedskift</h1>
-                <p>Aktuel fase: {{ phase }}</p>
-                <img :src="imageUrl" alt="Træ billede"/>
-            </div>
-        </div>
-    </div>
+    
     
 <script>
     // Fetch JSON-data fra Flask-backenden
@@ -107,5 +96,9 @@
 <script src="DailyGoal.js"></script>
 <script src="Index.js"></script>
 <script src="Phase.js"></script>
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

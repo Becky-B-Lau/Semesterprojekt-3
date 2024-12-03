@@ -40,7 +40,7 @@ createApp({
                     labels: ['Opnået', 'Manglende'],
                     datasets: [{
                         data: [this.percentage, 100 - this.percentage],
-                        backgroundColor: ['#FFD1DC', '#e0e0e0'] // Pink for opnået, grå for manglende
+                        backgroundColor: ['#0A6847', '#e0e0e0'] // Pink for opnået, grå for manglende
                     }]
                 },
                 options: {

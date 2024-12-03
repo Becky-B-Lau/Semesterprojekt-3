@@ -1,7 +1,3 @@
-body {
-  background-color: #F6E9B2; /* Baggrundsfarve */
-}
-
 .back-button {
   position: absolute; /* Placerer knappen relativt til vinduet */
   top: 20px; /* Juster afstand fra toppen */
@@ -24,7 +20,6 @@ body {
 h1 {
   margin-top: 80px; /* Tilføj afstand fra toppen til overskriften */
   text-align: center; /* Centrer overskriften */
-  color: #0A6847; /* Tekstfarve */
 }
 
 p, h2, h3, h4, h5, h6 {

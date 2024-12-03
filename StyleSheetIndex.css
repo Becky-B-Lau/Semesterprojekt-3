@@ -1,0 +1,104 @@
+.box {
+    width: 150px; /* Boksens bredde */
+    height: 150px; /* Boksens højde */
+    background-color: transparent; /* Boksens baggrundsfarve */
+    border: 2px solid #ccc; /* Boksens kant */
+    border-radius: 10px; /* Afrundede hjørner */
+    display: flex; /* Aktiver Flexbox */
+    flex-direction: column; /* Laver en lodret (kolonne) retning */
+    justify-content: center; /* Centrerer horisontalt */
+    align-items: center; /* Centrerer vertikalt */
+    text-align: center; /* Centrerer tekst indeni */
+}
+
+#box1 {
+    background-image: linear-gradient(45deg, #7ABA78, #F3CA52); /* Baggrundsfarve med gradient */
+}
+
+#box2 {
+    background-image: linear-gradient(135deg, #F3CA52, #7ABA78); /* Baggrundsfarve med gradient */
+}
+
+.box h1, .box h2 {
+    margin: 0; /* Fjerner standard margin */
+    padding: 0; /* Fjerner eventuel padding */
+}
+
+.box h1 {
+    font-size: 50px; /* Overskriftsstørrelse */
+}
+
+.box p {
+    font-size: 20px; /* Tekststørrelse */
+}
+
+.box h2 {
+    margin-top: 5px; /* Laver lidt afstand mellem h1 og h2 */
+    font-size: 60px; /* Overskriftsstørrelse */
+}
+
+.container {
+    display: flex; /* Gør containeren til en Flexbox */
+    justify-content: space-evenly; /* Placer bokse med jævn afstand */
+    align-items: center; /* Centrer boksene vertikalt */
+    flex-wrap: wrap; /* Tillad, at boksene bryder linjen på mindre skærme */
+    margin-top: 20px; /* Afstand til toppen */
+}
+
+.row {
+    display: flex; /* Gør hver række til en Flexbox */
+    flex-direction: row; /* Placer elementerne i en række */
+    gap: 10px; /* Giv mellemrum mellem boksene */
+}
+
+.col {
+    padding: 0%; /* Fjern padding */
+}
+
+.container2 {
+    display: flex;
+    justify-content: center; /* Centrerer horisontalt */
+    align-items: center; /* Centrerer lodret */
+    height: 100vh; /* Gør containeren høj */
+}
+
+#Træ {
+    height: auto; /* Skaleres i højden */
+    width: auto; /* Skaleres i bredden */
+    max-width: 350px; /* Maksimal bredde */
+}
+
+.Text {
+    font-size: 15px; /* Størrelse på tekst */
+    margin-top: 20px; /* Afstand til billedet */
+    text-align: center; /* Centrerer teksten horisontalt */
+    margin-left: 30%; /* Fjern fast margin og centrér */
+    margin-right: auto; /* Fjern fast margin og centrér */
+    width: 100%; /* Sørg for, at teksten tager hele bredden */
+}
+
+#stepsChart {
+    margin-top: 5%; /* Afstand til billedet */
+    text-align: center; /* Centrerer teksten horisontalt */
+    margin-right: auto; /* Fjern fast margin og centrér */
+    width: 100%; /* Sørg for, at teksten tager hele bredden */
+}
+
+#quote-section {
+    background-color: #f0f8ff; /* Lys blå baggrund */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Let skygge */
+}
+
+#quote-section h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #2c3e50; /* Mørk blå farve */
+}
+
+#quote-section p {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #34495e; /* Neutral tekstfarve */
+}
