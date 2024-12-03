@@ -1,11 +1,11 @@
 // URL til 3. parts service for citater
-const QUOTE_API_URL = "https</meta>://zenquotes.io/api/random"; // Eksempel API til citater
+const QUOTE_API_URL = "https://zenquotes.io/api/random"; // Eksempel API til citater
 
 // Funktion til at hente citat
 function fetchDailyQuote() {
     axios.get(QUOTE_API_URL)
         .then(response => {
-            const quoteData = response.data;
+            const quoteData = response.data[0];
             const quoteElement = document.getElementById("daily-quote");
             
             // Opdater citat-tekst

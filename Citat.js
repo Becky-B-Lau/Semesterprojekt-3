@@ -22,25 +22,12 @@ const appQuote = Vue.createApp ({
                 } catch (error) {
                     console.error('Fejl ved hentning af citat:', error);
                 }
-            },
-            fetchDailyQuote() {
-                axios.get(QUOTE_API_URL)
-                    .then(response => {
-                        const quoteData = response.data;
-                        const quoteElement = document.getElementById("daily-quote");
-                        
-                        // Opdater citat-tekst
-                        quoteElement.textContent = `"${quoteData.content}" - ${quoteData.author}`;
-                    })
-                    .catch(error => {
-                        console.error("Fejl ved hentning af citat:", error);
-                        document.getElementById("daily-quote").textContent = "Kunne ikke hente citat.";
-                    });
+              }
             },
             mounted() {
                 this.fetchQuote();
     
                 setInterval(this.fetchQuote, 86400000);
             }
-    }
+
 }).mount('#appQuote');

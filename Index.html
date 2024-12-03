@@ -12,8 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.js"></script>
     <!-- Chart.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <!-- Axios -->
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- Axios (already included below) -->
     <link rel="stylesheet" href="StyleSheetIndex.css">
     <link rel="stylesheet" href="StyleSheet.css">
 </head>
@@ -61,11 +60,9 @@
             <h4 class="mb-2 mb-md-0 mr-md-2">Din fase er {{phase}}/5</h4>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
-        <div id="appQuote">
-            <div id="quote-section" class="container text-center my-4">
-                <h3>Dagligt Motivationscitat</h3>
-                <p id="daily-quote">{{qoute}}</p>
-            </div>
+        <div id="quote-section" class="container text-center my-4">
+            <h3>Dagligt Motivationscitat</h3>
+            <p id="daily-quote">Indlæser citat...</p>
         </div>
     </div>
 
@@ -98,9 +95,11 @@
 <script src="DailyGoal.js"></script>
 <script src="Index.js"></script>
 <script src="Phase.js"></script>
+<script src="Citat.js"></script>
 <!-- Bootstrap JS and Popper.js -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>
