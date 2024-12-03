@@ -29,6 +29,7 @@ def step_index():
     step = Database.read_last_step()
     phase = Database.read_last_phase()
     date = Database.read_last_date()
+    counter_tree = Database.read_last_counter_tree()
     
     # Gem værdien fra read_last_date_quote i en variabel
     last_date_quote = Database.read_last_date_quote()
@@ -59,13 +60,14 @@ def step_index():
     print(f"Step: {step}, Phase: {phase}, Date: {date}")
 
     # Return JSON med alle data
-    if step is not None and phase is not None and date is not None:
+    if step is not None and phase is not None and date is not None and counter_tree is not None:
         return jsonify({
             "step": step,
             "phase": phase,
             "date": date,  # Return `date` som en liste
             "author": author,
-            "quote": quote
+            "quote": quote,
+            "counter_tree": counter_tree,
         })
     else:
         return jsonify({"error": "No data found"}), 404
