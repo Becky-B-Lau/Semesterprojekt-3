@@ -2,7 +2,7 @@ const appImage = Vue.createApp ({
     data() {
             return {
                 phase: 0, // Standard fase (hentes fra databasen)
-                imageUrl: './Images/Træ 5.png' // Standardbillede
+                imageUrl: './Images/Træ 0.png' // Standardbillede
             };
         },
         methods: {
