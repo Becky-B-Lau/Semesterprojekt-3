@@ -22,6 +22,7 @@
     <nav class="navbar navbar-expand-lg" id="navbar">
         <div class="container">
             <a class="navbar-brand" href="#"><b>Gå for et træ</b></a>
+            <p>{{message}}</p>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                     <div style="width: 30px; height: 3px; background-color: #0A6847;"></div>
@@ -61,7 +62,7 @@
             <h4 class="mb-2 mb-md-0 mr-md-2">Din fase er {{phase}}/5</h4>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
-        <div id="quote-section" class="container text-center my-4">
+        <div id="white-modal" class="container text-center my-4">
             <h3>Dagligt Motivationscitat</h3>
             <p id="daily-quote">Indlæser citat...</p>
         </div>

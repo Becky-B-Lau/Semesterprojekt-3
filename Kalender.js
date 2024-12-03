@@ -38,18 +38,28 @@ function renderCalendar(month, year) {
 
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCell = document.createElement("li");
+    
+        // Opret et link for hver dag
+        const dayLink = document.createElement("a");
         const dayText = document.createElement("span");
         dayText.textContent = day; // Sæt dagens nummer i span
-        dayCell.appendChild(dayText);
-
+        dayLink.appendChild(dayText);
+    
+        // Dynamisk URL for hver dato
+        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        dayLink.href = `DetailDate.html?date=${dateStr}`; // Dynamisk link til DetailDate.html
+    
+        // Tilføj linket til dagcellen
+        dayCell.appendChild(dayLink);
+    
         // Beregn datoen for den aktuelle dag
         const currentDate = new Date(year, month, day);
-
+    
         // Marker tidligere dage som standard rød
         if (currentDate < today) {
             dayCell.classList.add("past-default"); // Standard rød baggrund
         }
-
+    
         // Marker den aktuelle dag som hvid
         if (
             day === today.getDate() &&
@@ -58,11 +68,8 @@ function renderCalendar(month, year) {
         ) {
             dayCell.classList.add("active"); // Hvid baggrund
         }
-
-        // Tilføj data-dato-attribut
-        const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        dayCell.setAttribute("data-date", dateStr);
-
+    
+        // Tilføj dagcellen til kalenderen
         daysContainer.appendChild(dayCell);
     }
 
