@@ -62,7 +62,9 @@ try:
                 if (phase>5):
                     phase=0
             if (phase==5):
-                Coutner_tree+=1
+                    last_phase = Database.read_last_phase()
+                    if last_phase != 5:  # Tjek om fasen netop er blevet 5
+                        Coutner_tree += 1
             
             # Gem beskeden i tabellen "steps"
             Database.insert_data(stepFromDatabase,phase, datetime.now(),Coutner_tree)
