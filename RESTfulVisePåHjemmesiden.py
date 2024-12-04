@@ -55,6 +55,8 @@ def step_index():
     # Sørg for, at `date` altid er en liste
     if not isinstance(date, list):
         date = [date]  # Pak `date` ind i en liste, hvis det ikke allerede er en liste
+        
+    # Tjek om det er en liste - detaildate
 
     # Debugging: Log data, der sendes tilbage
     print(f"Step: {step}, Phase: {phase}, Date: {date}")

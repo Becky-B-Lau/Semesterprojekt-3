@@ -15,14 +15,20 @@ Vue.createApp({
             // Læs datoen fra URL'en
             const urlParams = new URLSearchParams(window.location.search);
             this.selectedDate = urlParams.get("date");
-
+            //selectedDate er en string og indeholder 2024-12-03
+        
             try {
                 // Hent data fra backend eller API
                 const response = await fetch('http://127.0.0.1:5001/');
                 const allData = await response.json();
-
+                
+                console.log(`All Data: ${JSON.stringify(allData)}`);
+                const data = allData;
                 // Find data for den valgte dato
-                const dateData = allData[this.selectedDate];
+                const dateData = data[this.selectedDate];
+                
+                console.log("dateData:" + dateData)
+
 
                 if (dateData) {
                     // Opdater Vue data-variabler

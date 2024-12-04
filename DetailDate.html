@@ -32,6 +32,30 @@
         </div>
     </div>
 </div>
+    <script>
+        // Fetch JSON-data fra Flask-backenden
+        fetch('http://127.0.0.1:5001/')
+        .then(response => {
+            console.log('HTTP status:', response.status); // Debug
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data fra serveren:', data); // Debug
+            const stepElement = document.getElementById('last-step');
+            if (data.step) {
+                stepElement.textContent = `${data.step}`;
+            } else {
+                stepElement.textContent = 'Ingen data fundet.';
+            }
+        })
+        .catch(error => {
+            console.error('Fejl ved hentning:', error);
+            document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
+        });
+    </script>
     <script src="DetailDate.js"></script>
 </body>
 </html>
