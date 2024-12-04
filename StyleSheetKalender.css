@@ -136,7 +136,7 @@ body {font-family: Verdana, sans-serif;}
 .days li.active {
   background-color: white; /* Hvid baggrund */
   color: black; /* Sort tekst */
-  border: 1px solid #ccc; /* Tilføj evt. en kant for at fremhæve dagen */
+  border: 3px solid black; /* Tilføj evt. en kant for at fremhæve dagen */
 }
 
 .days li.future {

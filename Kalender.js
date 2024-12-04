@@ -72,33 +72,55 @@ function renderCalendar(month, year) {
 
 async function fetchStepData(month, year) {
     try {
-        const response = await fetch(API_URL); // Hent data fra API
-        const data = await response.json(); // Konverter API-data til JSON
-        console.log("API data:", data); // Debug: Log API-data
+        const response = await fetch(API_URL);
+        const data = await response.json();
 
-        // Gennemgå alle dage i kalenderen
-        document.querySelectorAll(".days li").forEach((dayElement) => {
-            const date = dayElement.getAttribute("data-date"); // Hent data-dato-attribut
-            if (date) {
-                // Marker som standard rød for tidligere dage
-                const currentDate = new Date(date);
-                if (currentDate < today) {
-                    dayElement.classList.add("past-default"); // Rød som standard
-                }
+        console.log("API-data struktur:", data);
 
-                // Gennemgå alle datoer i JSON-data
-                const relevantEntry = data.date.find((entry) => entry === date);
+        // Kontroller, om data er korrekt struktureret
+        if (data.date && Array.isArray(data.date)) {
+            const step = data.step || 0; // Brug den fælles skridtværdi
 
-                if (relevantEntry) {
-                    // Opdater til grøn, hvis målet er nået
-                    if (data.step >= 10000) {
-                        dayElement.classList.remove("past-default"); // Fjern rød
-                        dayElement.classList.add("goal-met"); // Grøn baggrund
-                        console.log(`${date}: Grøn (Nået mål)`);
+            document.querySelectorAll(".days li").forEach((dayElement) => {
+                const date = dayElement.getAttribute("data-date");
+
+                if (date) {
+                    console.log("Kalender-dato:", date);
+
+                    // Tjek, om datoen findes i API'ets dato-array
+                    if (data.date.includes(date)) {
+                        console.log(`Dato fundet: ${date}, Skridt: ${step}`);
+
+                        // Opdater dagfarve baseret på skridtværdier
+                        if (step >= 10000) {
+                            // Tilføj den grønne klasse
+                            dayElement.classList.add("goal-met");
+                            dayElement.classList.remove("goal-not-met");
+
+                            // Debug-log for at sikre, at det bliver grønt
+                            console.log(`Dag opdateret til grøn: ${date}`);
+
+                            // Brug inline-styling til at teste, om styling bliver anvendt korrekt
+                            dayElement.style.backgroundColor = "#7ABA78";
+                            dayElement.style.color = "white";
+                        } else {
+                            // Tilføj den røde klasse
+                            dayElement.classList.add("goal-not-met");
+                            dayElement.classList.remove("goal-met");
+
+                            // Debug-log for at sikre, at det bliver rødt
+                            console.log(`Dag opdateret til rød: ${date}`);
+
+                            // Brug inline-styling til at teste, om styling bliver anvendt korrekt
+                            dayElement.style.backgroundColor = "red";
+                            dayElement.style.color = "white";
+                        }
                     }
                 }
-            }
-        });
+            });
+        } else {
+            console.error("Data er ikke korrekt struktureret:", data);
+        }
     } catch (error) {
         console.error("Fejl ved hentning af data:", error);
     }
