@@ -6,6 +6,7 @@ const appQuote = Vue.createApp({
             date: new Date().toLocaleDateString(), // Dagens dato
             quote: "Indlæser citat...", // Standardtekst, mens citat hentes
             author: "" // Standard forfatter (tom indtil citat hentes)
+            
         };
     },
     methods: {
