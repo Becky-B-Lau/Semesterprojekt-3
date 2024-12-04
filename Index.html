@@ -58,14 +58,14 @@
             </div>
         </div>
         <div id="appimage" class="d-flex flex-column flex-md-row align-items-center">
-            <h4 class="mb-2 mb-md-0 mr-md-2">Din fase er {{phase}}/5</h4>
+            <h5 class="mb-2 mb-md-0 mr-md-2">Dit nuværende træ er i fase {{phase}}/5</h5>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
         <div id="appQuote">
             <div id="quote-section" class="container text-center my-4">
-                <h3>Dagligt Motivationscitat</h3>
                 <p>{{ quote }}</p>
-                <p><em> - {{ author }}</em></p>
+                <p> - </p>
+                <p><b><em>{{ author }}</em></b></p>
             </div>
         </div>
     </div>

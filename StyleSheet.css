@@ -8,7 +8,7 @@ body {
   }
 
   .navbar {
-    background: linear-gradient(#7ABA78, #F6E9B2); /* Baggrundsfarve */ 
+    background: linear-gradient(#0A6847, #7ABA78, #F6E9B2); /* Baggrundsfarve */ 
 }
 
 .nav-link, .navbar-brand {

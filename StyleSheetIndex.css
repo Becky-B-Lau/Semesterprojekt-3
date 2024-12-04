@@ -83,22 +83,20 @@
     margin-right: auto; /* Fjern fast margin og centrér */
     width: 100%; /* Sørg for, at teksten tager hele bredden */
 }
-
 #quote-section {
-    background-color: #f0f8ff; /* Lys blå baggrund */
+    background: linear-gradient(#F6E9B2); /* Baggrundsfarve */ 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Let skygge */
+    width: 100vw; /* Gør sektionen hele skærmens bredde */
+    box-sizing: border-box; /* Inkluder padding og border i elementets samlede bredde */
 }
 
 #quote-section h3 {
     margin-bottom: 10px;
     font-size: 1.5rem;
-    color: #2c3e50; /* Mørk blå farve */
 }
 
 #quote-section p {
     font-size: 1.2rem;
     font-style: italic;
-    color: #34495e; /* Neutral tekstfarve */
 }
