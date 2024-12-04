@@ -2,10 +2,6 @@ from socket import *
 import Database  # Importér din eksisterende databaseforbindelse
 from datetime import datetime, timedelta
 
-# Opret en databaseforbindelse én gang
-db_connection = Database.connect_to_database()
-cursor = db_connection.cursor()
-
 # Server setup
 serverPort = 5001
 serverSocket = socket(AF_INET, SOCK_DGRAM)
@@ -79,5 +75,3 @@ except KeyboardInterrupt:
 finally:
     # Ryd op ved afslutning
     serverSocket.close()
-    cursor.close()
-    db_connection.close()
