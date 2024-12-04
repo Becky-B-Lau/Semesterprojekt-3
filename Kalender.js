@@ -4,8 +4,8 @@ let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 
 const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
+    "Januar", "Februar", "Marts", "April", "Maj", "Juni",
+    "Juli", "August", "September", "Oktober", "November", "December"
 ];
 
 // URL til API (Flask-server)
