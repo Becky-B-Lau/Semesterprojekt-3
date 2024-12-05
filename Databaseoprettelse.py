@@ -44,19 +44,6 @@ def create_tables_if_not_exist(connection):
         else:
             print("Tabellen 'steps' findes allerede. Ingen handling udført.")
 
-        # Tjek og opret 'daily_quote'-tabellen, hvis den ikke findes
-        if not table_exists('daily_quote'):
-            cursor.execute('''
-                CREATE TABLE daily_quote (
-                    id INT AUTO_INCREMENT PRIMARY KEY,
-                    date CHAR(10) NOT NULL,
-                    quote TEXT NOT NULL,
-                    author TEXT NOT NULL
-                )
-            ''')
-            print("Tabellen 'daily_quote' blev oprettet!")
-        else:
-            print("Tabellen 'daily_quote' findes allerede. Ingen handling udført.")
     except Error as e:
         print(f"Fejl ved oprettelse af tabeller: {e}")
     finally:
