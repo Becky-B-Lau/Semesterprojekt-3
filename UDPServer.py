@@ -30,7 +30,7 @@ if phase is None:
 
 Coutner_tree = Database.read_last_counter_tree()
 if Coutner_tree is None:
-    Coutner_tree = 0  # Standardværdi for phase
+    Coutner_tree = 0  # Standardværdi for counter_tree
 try:
     while True:
         now = datetime.now()
