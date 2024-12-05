@@ -28,20 +28,19 @@ Vue.createApp({
         
                 if (Array.isArray(detailDateList)) {
                     // Find data for den valgte dato
-                    const dateData = detailDateList.find(item => item.date === this.selectedDate);
+                    const dateData = detailDateList.find(item => item[3] === this.selectedDate);
         
                     console.log("Matched dateData:", dateData);
         
                     if (dateData) {
                         // Opdater Vue data-variabler
-                        this.steps = dateData.steps || "Ingen data";
-                        this.phase = dateData.phase || "-";
-                        this.imageUrl = dateData.imageUrl || "";
-                        this.altText = `Fase ${dateData.phase || "-"} billede`;
+                        this.steps = dateData[1] 
+                        this.phase = dateData[2] 
+                       
                     } else {
                         // Ingen data for den valgte dato
                         this.steps = "Ingen data tilgængelig for denne dato.";
-                        this.phase = "-";
+                        this.phase = "0";
                         this.imageUrl = "";
                         this.altText = "Ingen billede tilgængeligt";
                     }

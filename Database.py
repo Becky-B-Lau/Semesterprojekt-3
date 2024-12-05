@@ -206,9 +206,9 @@ def read_last_detailDate():
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM steps s1 WHERE id = (SELECT MAX(s2.id) FROM steps s2 WHERE s1.date = s2.date ORDER BY id DESC)')
  # Sorter efter id og hent sidste række
-        rows = cursor.fetchone()
+        rows = cursor.fetchall()
         connection.close()
-        return [row[0] for row in rows] if rows else []
+        return [row for row in rows] if rows else []
     
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
