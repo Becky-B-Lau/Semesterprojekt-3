@@ -70,6 +70,7 @@ createApp({
     mounted() {
         this.initChart(); // Initialiser diagrammet
         this.fetchSteps(); // Hent initiale data
+        this.updateChart(); // Opdater diagrammet
 
         // Opdater data hvert 5. sekund
         setInterval(this.fetchSteps, 5000);
