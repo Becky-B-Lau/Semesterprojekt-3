@@ -31,6 +31,7 @@ if phase is None:
 Coutner_tree = Database.read_last_counter_tree()
 if Coutner_tree is None:
     Coutner_tree = 0  # Standardværdi for counter_tree
+
 try:
     while True:
         now = datetime.now()
@@ -69,9 +70,6 @@ try:
         except ValueError:
             print(f"Invalid data received: {decoded_message}. Skipping...")
             serverSocket.sendto(b"Invalid data format.", clientAddress)
-
-except KeyboardInterrupt:
-    print("\nServer shutting down...")
 finally:
     # Ryd op ved afslutning
     serverSocket.close()
