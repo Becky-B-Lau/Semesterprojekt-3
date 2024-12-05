@@ -4,7 +4,6 @@ const appSkov = Vue.createApp({
       message: "hello",
       counter_tree: 0, // This is fetched from the backend
       imageUrl: './Images/Træ5_small.png', // Image source
-      treesInRows: [] // To hold the number of images in each row
     };
   },
   methods: {
@@ -23,23 +22,6 @@ const appSkov = Vue.createApp({
         console.error('Error fetching tree count:', error);
       }
     },
-
-    calculateRows() {
-      // Create rows based on counter_tree, each row can have up to 12 trees
-      const rows = [];
-      let row = [];
-      for (let i = 1; i <= this.counter_tree; i++) {
-        row.push(i); // Add tree to the current row
-        if (row.length === 12) {
-          rows.push(row); // Push row with 12 trees to rows
-          row = []; // Start a new row
-        }
-      }
-      if (row.length > 0) {
-        rows.push(row); // Push any remaining trees in the last row
-      }
-      this.treesInRows = rows; // Update the rows data
-    }
   },
   mounted() {
     // Fetch tree count from backend when the app loads

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detaljer for dato</title>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+<div id="appDetailDate">
+    <div class="container">
+        <div class="row">
+            <!-- Boks til skridt -->
+            <div class="box" id="box1">
+               <h1>{{steps}}</h1>            
+                <p>Skridt</p>
+            </div>
+            <div id="appDetailDate">                
+                <!-- Diagram boks -->
+                <div class="col">
+                    <div class="box" id="box2">
+                        <canvas id="stepsChart"></canvas>
+                    </div>
+                    <p>{{message}}</p>
+                </div>
+            </div>
+        </div>
+        <div id="appimage" class="d-flex flex-column flex-md-row align-items-center">
+            <h4 class="mb-2 mb-md-0 mr-md-2"> <span>Din fase er {{phase}}</span>/5</h4>
+            <img id="treeImage" alt="Træ billede" />
+        </div>
+    </div>
+</div>
+    <script>
+        // Fetch JSON-data fra Flask-backenden
+        fetch('http://127.0.0.1:5001/')
+        .then(response => {
+            console.log('HTTP status:', response.status); // Debug
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Data fra serveren:', data); // Debug
+            const stepElement = document.getElementById('last-step');
+            if (data.step) {
+                stepElement.textContent = `${data.step}`;
+            } else {
+                stepElement.textContent = 'Ingen data fundet.';
+            }
+        })
+        .catch(error => {
+            console.error('Fejl ved hentning:', error);
+            document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
+        });
+    </script>
+    <script src="DetailDate.js"></script>
+</body>
+</html>

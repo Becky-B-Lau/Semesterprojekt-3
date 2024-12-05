@@ -200,6 +200,20 @@ def read_last_author():
         print(f"Fejl ved læsning af data: {e}")
         return None
 
+def read_last_detailDate():
+    try:
+        connection = connect_to_database()  # Funktion til at oprette forbindelse
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM steps s1 WHERE id = (SELECT MAX(s2.id) FROM steps s2 WHERE s1.date = s2.date ORDER BY id DESC)')
+ # Sorter efter id og hent sidste række
+        rows = cursor.fetchall()
+        connection.close()
+        return [row for row in rows] if rows else []
+    
+    except Exception as e:
+        print(f"Fejl ved læsning af data: {e}")
+        return None
+    
 # Main program
 if __name__ == "__main__":
     # Forbind til databasen
