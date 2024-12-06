@@ -119,9 +119,6 @@ async function fetchStepData(month, year) {
 
                             // Debug-log for at sikre, at det bliver rødt
                             console.log(`Dag opdateret til rød: ${date}`);
-
-                            // Brug inline-styling til at teste, om styling bliver anvendt korrekt
-                            dayElement.style.color = "white";
                         }
                     }
                 }
