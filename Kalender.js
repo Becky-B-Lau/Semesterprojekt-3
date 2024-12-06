@@ -44,13 +44,15 @@ function renderCalendar(month, year) {
         const dayText = document.createElement("span");
         dayText.textContent = day; // Sæt dagens nummer i span
         dayLink.appendChild(dayText);
+        dayCell.appendChild(dayLink);
     
         // Dynamisk URL for hver dato
         const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
         dayLink.href = `DetailDate.html?date=${dateStr}`; // Dynamisk link til DetailDate.html
-    
-        // Tilføj linket til dagcellen
-        dayCell.appendChild(dayLink);
+
+        // Tilføj data-dato-attribut
+        const dateNr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+        dayCell.setAttribute("data-date", dateNr);
     
         // Beregn datoen for den aktuelle dag
         const currentDate = new Date(year, month, day);
