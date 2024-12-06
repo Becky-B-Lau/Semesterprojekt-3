@@ -5,13 +5,14 @@ body {
   
   p, h1, h2, h3, h4, h5, h6 {
     color: #0A6847; /* Tekstfarve */
+    text-decoration: none; /* Fjern understregning */
   }
 
   .navbar {
     background: linear-gradient(#0A6847, #7ABA78, #F6E9B2); /* Baggrundsfarve */ 
 }
 
-.nav-link, .navbar-brand {
+.nav-link, .navbar-brand, a {
     color: #0A6847; /* Tekstfarve */
     text-decoration: none; /* Fjern understregning */
     margin: 0 10px; /* Afstand mellem elementerne */
@@ -53,10 +54,6 @@ body {
   h1 {
     margin-top: 80px; /* Tilføj afstand fra toppen til overskriften */
     text-align: center; /* Centrer overskriften */
-  }
-  
-  p, h2, h3, h4, h5, h6 {
-    color: rgb(48, 47, 47); /* Tekstfarve */
   }
 
   #white-modal {
