@@ -1,3 +1,21 @@
 .tree-img {
     padding: 5px;
 }
+
+#tree-overview {
+    background: linear-gradient(#F6E9B2); /* Baggrundsfarve */ 
+    padding: 20px;
+    border-radius: 10px;
+    width: 100vw; /* Gør sektionen hele skærmens bredde */
+    box-sizing: border-box; /* Inkluder padding og border i elementets samlede bredde */
+}
+
+#tree-overview h3 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+#tree-overview p {
+    font-size: 1.2rem;
+    font-style: italic;
+}

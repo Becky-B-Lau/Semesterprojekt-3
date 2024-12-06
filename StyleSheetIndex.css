@@ -85,7 +85,7 @@
 }
 
 #quote-section {
-    background: linear-gradient(#F6E9B2); /* Baggrundsfarve */ 
+    background: #F6E9B2; /* Baggrundsfarve */ 
     padding: 20px;
     padding-right: 10%; /* Afstand til højre */
     margin-right: 20px; /* Afstand til højre */
