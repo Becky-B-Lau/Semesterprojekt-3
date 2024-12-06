@@ -8,6 +8,11 @@ body {
     text-decoration: none; /* Fjern understregning */
   }
 
+  #tilbage-knap {
+    text-decoration: none; /* Fjern understregning */
+    color: white; /* Tekstfarve */
+  }
+
   .navbar {
     background: linear-gradient(#0A6847, #7ABA78, #F6E9B2); /* Baggrundsfarve */ 
 }
@@ -74,3 +79,4 @@ body {
     font-style: italic;
     color: #34495e; /* Neutral tekstfarve */
 }
+

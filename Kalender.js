@@ -121,7 +121,6 @@ async function fetchStepData(month, year) {
                             console.log(`Dag opdateret til rød: ${date}`);
 
                             // Brug inline-styling til at teste, om styling bliver anvendt korrekt
-                            dayElement.style.backgroundColor = "red";
                             dayElement.style.color = "white";
                         }
                     }
