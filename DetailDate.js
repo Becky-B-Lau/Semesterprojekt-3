@@ -129,6 +129,8 @@ Vue.createApp({
             if (this.chart) {
                 this.chart.data.datasets[0].data = [this.percentage, 100 - this.percentage];
                 this.chart.update();
+            } else {
+                console.error("Diagrammet er ikke initialiseret korrekt.");
             }
         }
         
@@ -136,9 +138,14 @@ Vue.createApp({
     },
     mounted() {
         // Hent data, når komponenten er monteret
-        this.fetchData();
         this.fetchSteps();
-        this.initChart(); // Initialiser diagrammet
-        
+        this.fetchData()
+        .then(() => {
+            this.initChart(); // Initialiser diagrammet først, når data er hentet
+        })
+        .catch((error) => {
+            console.error("Fejl ved indlæsning af data:", error);
+        });   
+           
     }
 }).mount("#appDetailDate");
