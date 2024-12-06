@@ -2,7 +2,7 @@ Vue.createApp({
     data() {
         return {
             selectedDate: null,
-            steps: "Indlæser...",
+            footsteps: "Indlæser...",
             phase: "Indlæser...",
             image: "",
             goal: 10000, // Dagligt mål
@@ -34,7 +34,7 @@ Vue.createApp({
         
                     if (dateData) {
                         // Opdater Vue data-variabler
-                        this.steps = dateData[1] 
+                        this.footsteps = dateData[1] 
                         this.phase = dateData[2] 
                         if (this.phase == 0) { 
                             this.image = "Images/Træ 0.png";
@@ -52,17 +52,17 @@ Vue.createApp({
                        
                     } else {
                         // Ingen data for den valgte dato
-                        this.steps = "Ingen data tilgængelig for denne dato.";
+                        this.footsteps = "Ingen data tilgængelig for denne dato.";
                         this.phase = "0";
                         this.image = "Images/Træ 0.png";
                     }
                 } else {
                     console.error("detailDate er ikke en liste:", detailDateList);
-                    this.steps = "Kunne ikke finde detailDate data.";
+                    this.footsteps = "Kunne ikke finde detailDate data.";
                 }
             } catch (error) {
                 console.error("Fejl ved hentning af data:", error);
-                this.steps = "Kunne ikke hente data.";
+                this.footsteps = "Kunne ikke hente data.";
                 this.phase = "-";
                 this.image = "Images/Træ 0.png";
             }
@@ -75,17 +75,29 @@ Vue.createApp({
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
+                const allData = await response.json();
+        
+                console.log(`All Data: ${JSON.stringify(allData)}`);
+        
+                // Antag, at `detailDate` er en liste
+                const detailDateList = allData.detailDate;
+                console.log(`All Data: ${JSON.stringify(detailDateList)}`);
+                console.log(detailDateList);
+        
+                if (Array.isArray(detailDateList)) {
+                    // Find data for den valgte dato
+                    const dateData = detailDateList.find(item => item[3] === this.selectedDate);
+                    // Opdater Vue-data
+                    this.footsteps = dateData[1];
+                    this.goal = 10000
+          // Beregn procentdel i frontend
+                    this.percentage = Math.min((this.footsteps / this.goal) * 100, 100); // Begræns til 100%
+          
+          // Opdater diagram
+                     this.updateChart();
 
-                const data = await response.json();
-            
-                // Opdater Vue-data
-                this.steps = data.step;
-                this.goal = 10000
-                // Beregn procentdel i frontend
-                this.percentage = Math.min((this.steps / this.goal) * 100, 100); // Begræns til 100%
-                
-                // Opdater diagram
-                this.updateChart();
+                }
+              
             } catch (error) {
                 console.error('Fejl ved hentning af skridttællerdata:', error);
             }
