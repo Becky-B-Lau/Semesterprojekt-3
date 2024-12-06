@@ -88,7 +88,6 @@ async function fetchStepData(month, year) {
 
         // Kontroller, om data er korrekt struktureret
         if (data.date && Array.isArray(data.date)) {
-            const step = data.step || 0; // Brug den fælles skridtværdi
 
             document.querySelectorAll(".days li").forEach((dayElement) => {
                 const date = dayElement.getAttribute("data-date");
@@ -98,10 +97,10 @@ async function fetchStepData(month, year) {
 
                     // Tjek, om datoen findes i API'ets dato-array
                     if (data.date.includes(date)) {
-                        console.log(`Dato fundet: ${date}, Skridt: ${step}`);
+                        console.log(`Dato fundet: ${date}`);
 
                         // Opdater dagfarve baseret på skridtværdier
-                        if (step >= 10000) {
+                        if (data.date.includes(date)) {
                             // Tilføj den grønne klasse
                             dayElement.classList.add("goal-met");
                             dayElement.classList.remove("goal-not-met");
