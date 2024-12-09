@@ -22,6 +22,9 @@ const appSkov = Vue.createApp({
         console.error('Error fetching tree count:', error);
       }
     },
+    showTreeId(id) {
+      alert('Træ nr: ' + id);
+    }
   },
   mounted() {
     // Fetch tree count from backend when the app loads

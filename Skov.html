@@ -22,15 +22,15 @@
             <p>Godt gået!</p>
         </div>
           <!-- Responsive grid layout for trees -->
-          <div class="row">
-            <div
+            <div class="row">
+              <div
               v-for="(tree, index) in counter_tree"
               :key="index"
               class="col-4 col-sm-3 col-md-2 d-flex justify-content-center"
-            >
-              <img :src="imageUrl" alt="Træ" class="img-fluid tree-img" />
+              >
+              <img :src="imageUrl" :id="'tree-' + (index + 1)" alt="Træ" class="img-fluid tree-img" @click="showTreeId(index + 1)" />
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
