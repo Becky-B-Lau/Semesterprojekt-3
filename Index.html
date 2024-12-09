@@ -90,12 +90,12 @@
         if (data.step) {
             stepElement.textContent = `${data.step}`;
         } else {
-            stepElement.textContent = 'Ingen data fundet.';
+            stepElement.textContent = '0';
         }
     })
     .catch(error => {
         console.error('Fejl ved hentning:', error);
-        document.getElementById('last-step').textContent = 'Kunne ikke hente data.';
+        document.getElementById('last-step').textContent = 'Kunne ikke hente data';
     });
 </script>
 <script src="Phase.js"></script>
