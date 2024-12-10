@@ -24,14 +24,11 @@ if Coutner_tree is None:
 
 try:
     while True:
-        now = datetime.now()
+    
         # Modtag data fra klienten
         message, clientAddress = serverSocket.recvfrom(2048)
         decoded_message = message.decode()
-        
 
-
-            
         try:
             # Konverter beskeden til integer (trin tælling)
             step_count = int(decoded_message)
