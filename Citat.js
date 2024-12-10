@@ -1,4 +1,4 @@
-const QUOTE_API_URL = "http://api.quotable.io/random"; // URL til Quotable API
+const QUOTE_API_URL = "https://api.quotable.io/random"; // URL til Quotable API
 
 const appQuote = Vue.createApp({
     data() {
