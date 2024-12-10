@@ -1,3 +1,4 @@
+from datetime import datetime
 import mysql.connector
 from mysql.connector import Error
 
@@ -60,10 +61,24 @@ def read_last_step():
     try:
         connection = connect_to_database()  # Funktion til at oprette forbindelse
         cursor = connection.cursor()
-        cursor.execute('SELECT steps FROM steps ORDER BY id DESC LIMIT 1')  # Sorter efter id og hent sidste række
+        cursor.execute('SELECT steps, date FROM steps ORDER BY id DESC LIMIT 1')  # Sorter efter id og hent sidste række
         row = cursor.fetchone()
         connection.close()
-        return row[0] if row else None  # Returner værdien af "steps"
+        if row:
+            steps, date = row  # Hent både steps og dato
+
+            # Hvis `date` er i strengformat, konverter den til datetime
+            if isinstance(date, str):
+                from datetime import datetime
+                date = datetime.strptime(date, '%Y-%m-%d')  # Tilpas formatet til din database
+
+            # Sammenlign kun dato-delen
+            if date.date() == datetime.now().date():
+                return steps
+            else:
+                return 0
+        else:
+            return 0  # Ingen rækker i databasen
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
         return None
