@@ -12,7 +12,7 @@ const appQuote = Vue.createApp({
         async fetchQuote() {
             try {
                 console.log("Fetching quote...");
-                // Send en GET-anmodning til ZenQuotes API
+                // Send en GET-anmodning til Quotes API
                 const response = await fetch(QUOTE_API_URL);
                 
                 if (!response.ok) {
