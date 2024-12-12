@@ -61,13 +61,24 @@
             <h5 class="mb-2 mb-md-0 mr-md-2">Dit nuværende træ er i fase {{phase}}/5</h5>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
-        <div id="appQuote">
-            <div id="quote-section" class="container text-center my-4">
-                <p>{{ quote }}</p>
-                <p>-</p>
-                <p><b><em>{{ author }}</em></b></p>
+        <div class="row">
+            <div class="col-7">
+                <div id="appQuote">
+                    <div id="quote-section">
+                    <div class="bubble">
+                        <div class="wrapper">
+                            <p>{{ quote }}</p>
+                            <p><b><em>- {{ author }}</em></b></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-1" id="Egern-box">
+                <img src="Images\Egern.png" id="Egern">
             </div>
         </div>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.33/dist/vue.global.js"></script>
     <script src="Citat.js"></script>

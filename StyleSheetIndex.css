@@ -85,12 +85,8 @@
 }
 
 #quote-section {
-    background: #F6E9B2; /* Baggrundsfarve */ 
-    padding: 20px;
-    padding-right: 10%; /* Afstand til højre */
-    margin-right: 20px; /* Afstand til højre */
-    border-radius: 10px;
-    width: 100vw; /* Gør sektionen hele skærmens bredde */
+    background: #F6E9B2; /* Baggrundsfarve */
+    width: 60vw; /* Gør sektionen hele skærmens bredde */
     box-sizing: border-box; /* Inkluder padding og border i elementets samlede bredde */
 }
 
@@ -103,3 +99,39 @@
     font-size: 1.2rem;
     font-style: italic;
 }
+
+#Egern {
+    height: auto; /* Skaleres i højden */
+    width: auto; /* Skaleres i bredden */
+    max-width: 140px; /* Maksimal bredde */
+}
+
+#Egern-box {
+    display: flex; /* Aktiver Flexbox */
+    align-items: center; /* Centrerer vertikalt */
+}
+
+  .wrapper {
+    padding:20px;  
+  }
+  .bubble {
+      position: relative;
+      background: #ece0a7;
+      text-align: center;
+      width: 75%;
+      height: 20%;
+      border-radius: 10px;
+      padding: 0px;
+  }
+  .bubble:after {
+      content: "";
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      border-left: 15px solid #ece0a7;
+      border-right: 15px solid transparent;
+      border-top: 15px solid #ece0a7;
+      border-bottom: 15px solid transparent;
+      right: -16px;
+      top: 80px;
+  }
