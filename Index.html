@@ -61,21 +61,19 @@
             <h5 class="mb-2 mb-md-0 mr-md-2">Dit nuværende træ er i fase {{phase}}/5</h5>
             <img :src="imageUrl" alt="Træ billede" id="Træ"/>
         </div>
-        <div class="row">
-            <div class="col-7">
-                <div id="appQuote">
-                    <div id="quote-section">
-                    <div class="bubble">
-                        <div class="wrapper">
-                            <p>{{ quote }}</p>
-                            <p><b><em>- {{ author }}</em></b></p>
-                        </div>
-                    </div>
-                    </div>
+        <div class="row justify-content-center align-items-center text-center" id="appGoal">
+            <div id="appQuote">
+            <div id="quote-section">
+                <div class="bubble">
+                <div class="wrapper">
+                    <p>{{ quote }}</p>
+                    <p><b><em>- {{ author }}</em></b></p>
+                </div>
                 </div>
             </div>
-            <div class="col-1" id="Egern-box">
-                <img src="Images\Egern.png" id="Egern">
+            </div>
+            <div>
+            <img src="Images\Egern.png" id="Egern" class="img-fluid">
             </div>
         </div>
         
