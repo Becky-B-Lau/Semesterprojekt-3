@@ -81,7 +81,31 @@ def read_last_step():
     except Exception as e:
         print(f"Fejl ved læsning af data: {e}")
         return None
+#til skoven - for at hente datoen, når man klikker på en træ i skoven
+#vi vil gerne have en tabel med den ældste counter_tree værdi for at vise datoen på skov-siden
+#retrieve the rows where each counter_tree value is paired with the the earliest date
+def read_first_counter_tree():
+    try:
+        connection = connect_to_database()
+        cursor = connection.cursor()
+        # Corrected SQL query
+        cursor.execute("""
+            SELECT counter_tree, date 
+            FROM steps s1 
+            WHERE date = (
+                SELECT MIN(s2.date) 
+                FROM steps s2 
+                WHERE s1.counter_tree = s2.counter_tree
+            )
+            ORDER BY counter_tree
+        """)
+        rows = cursor.fetchall() 
+        connection.close()
+        return [row for row in rows] if rows else [] 
 
+    except Exception as e:
+        print(f"Fejl ved læsning af data: {e}")
+        return None
 def read_last_phase():
     try:
         connection = connect_to_database()  # Funktion til at oprette forbindelse
