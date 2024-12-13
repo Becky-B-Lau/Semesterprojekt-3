@@ -29,7 +29,7 @@ const appSkov = Vue.createApp({
       this.id = id;
       try {
           // Fetch data from the backend (replace URL with your actual backend endpoint)
-          const response = await fetch('http://127.0.0.1:5001'); 
+          const response = await fetch('https://restfulonazura-g8dhdmhedpbuc4e4.northeurope-01.azurewebsites.net/'); 
           const data = await response.json();
   
           // Put all data into variable
