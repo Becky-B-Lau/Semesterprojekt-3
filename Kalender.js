@@ -9,7 +9,7 @@ const monthNames = [
 ];
 
 // URL til API (Flask-server)
-const API_URL = "https://restfulonazura-g8dhdmhedpbuc4e4.northeurope-01.azurewebsites.net/"; // Endpoint til at hente data
+const API_URL = "http://127.0.0.1:5001/"; // Endpoint til at hente data
 
 // Render kalenderen
 function renderCalendar(month, year) {

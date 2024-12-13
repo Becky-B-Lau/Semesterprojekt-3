@@ -1,5 +1,5 @@
 from socket import *
-import azura.databaseMin as databaseMin  # Importér din eksisterende databaseforbindelse
+import Database as Database  # Importér din eksisterende databaseforbindelse
 from datetime import datetime, timedelta
 
 # Server setup
@@ -10,18 +10,18 @@ serverSocket.bind(serverAddress)
 
 print("The server is ready to receive")
 
-stepFromDatabase = databaseMin.read_last_step()
+stepFromDatabase = Database.read_last_step()
 if stepFromDatabase is None:
     stepFromDatabase = 0  # Standardværdi for stepFromDatabase
 
-phase = databaseMin.read_last_phase()
-stepFromDatabase = databaseMin.read_last_step()
+phase = Database.read_last_phase()
+stepFromDatabase = Database.read_last_step()
 if stepFromDatabase is None:
     stepFromDatabase = 0
 if phase is None:
     phase = 0  # Standardværdi for phase
 
-Coutner_tree = databaseMin.read_last_counter_tree()
+Coutner_tree = Database.read_last_counter_tree()
 if Coutner_tree is None:
     Coutner_tree = 0  # Standardværdi for counter_tree
 
@@ -44,12 +44,12 @@ try:
                     phase=0
                     
             if (phase==5):
-                    last_phase = databaseMin.read_last_phase()
+                    last_phase = Database.read_last_phase()
                     if last_phase != 5:  # Tjek om fasen netop er blevet 5
                         Coutner_tree += 1
                         
             # Gem beskeden i tabellen "steps"
-            databaseMin.insert_data(stepFromDatabase,phase, datetime.now(),Coutner_tree)
+            Database.insert_data(stepFromDatabase,phase, datetime.now(),Coutner_tree)
            
         except ValueError:
             print(f"Invalid data received: {decoded_message}. Skipping...")
