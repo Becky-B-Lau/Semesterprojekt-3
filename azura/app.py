@@ -71,7 +71,7 @@ def step_index():
             "date": date,  # Return date som en liste
             "counter_tree": counter_tree,
             "detailDate" : detailDate,
-            "first_counter_tree" : first_counter_tree
+            "first_counter_tree" : first_counter_tree,
         })
     else:
         return jsonify({"error": "No data found"}), 404

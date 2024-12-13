@@ -9,7 +9,7 @@ const appImage = Vue.createApp ({
             async fetchPhase() {
                 try {
                     // Fetch fase fra din backend
-                    const response = await fetch('http://127.0.0.1:5001'); // Ændr URL til din endpoint
+                    const response = await fetch('https://restfulonazura-g8dhdmhedpbuc4e4.northeurope-01.azurewebsites.net/'); // Ændr URL til din endpoint
                     const data = await response.json();
 
                     // Opdater fase og billede

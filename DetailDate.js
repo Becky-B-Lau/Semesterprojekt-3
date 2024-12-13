@@ -16,7 +16,7 @@ Vue.createApp({
             this.selectedDate = urlParams.get("date"); // Få den valgte dato fra URL
         
             try {
-                const response = await fetch('http://127.0.0.1:5001/');
+                const response = await fetch('https://restfulonazura-g8dhdmhedpbuc4e4.northeurope-01.azurewebsites.net/');
                 const allData = await response.json();
         
                 console.log(`All Data: ${JSON.stringify(allData)}`);
@@ -70,7 +70,7 @@ Vue.createApp({
         // Hent data fra Flask-serveren
         async fetchSteps() {
             try {
-                const response = await fetch('http://127.0.0.1:5001/'); // Flask API endpoint
+                const response = await fetch('https://restfulonazura-g8dhdmhedpbuc4e4.northeurope-01.azurewebsites.net/'); // Flask API endpoint
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
