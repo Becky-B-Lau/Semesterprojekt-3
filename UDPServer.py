@@ -1,5 +1,5 @@
 from socket import *
-import Database as Database  # Importér din eksisterende databaseforbindelse
+import Database # Importér din eksisterende databaseforbindelse
 from datetime import datetime, timedelta
 
 # Server setup
