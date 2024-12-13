@@ -1,14 +1,46 @@
 from flask import Flask, jsonify
 import Database
 from flask_cors import CORS
+from flasgger import Swagger
 
 app = Flask(__name__)
 CORS(app)
-
+swagger = Swagger(app)
 
 
 @app.route('/', methods=['GET'])
 def step_index():
+    """
+    Hent de nyeste data fra databasen.
+    ---
+    responses:
+      200:
+        description: Returnerer de seneste data
+        schema:
+          type: object
+          properties:
+            step:
+              type: integer
+              description: Det nuværende trin
+            phase:
+              type: integer
+              description: Den nuværende fase
+            date:
+              type: array
+              items:
+                type: string
+              description: En liste over datoer
+            counter_tree:
+              type: integer
+              description: Tællerværdi
+            detailDate:
+              type: array
+              items:
+                type: string
+              description: Detaljerede datoer
+      404:
+        description: Ingen data fundet
+    """
     step = Database.read_last_step()
     phase = Database.read_last_phase()
     date = Database.read_last_date()
